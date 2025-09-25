@@ -1,0 +1,17 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "http://www.iata.org/IATA/2025.1/IATA_Baggage_CartRide.v1.0.0.json",
+	"title": "CartRide",
+	"description": "A use of a baggage cart to package a collection of bags of same segregation for transport between te",
+	"type": "object",
+	"required": [
+		"CartRide"
+	],
+	"properties": {
+		"CartRide": {
+			"title": "CartRide",
+			"description": "A use of a baggage cart to package a collection of bags of same segregation for transport between terminal and aircraft stand",
+			"$ref": "IATA_Baggage_Library.v1.0.0.json#/$defs/CartRide"
+		}
+	}
+}

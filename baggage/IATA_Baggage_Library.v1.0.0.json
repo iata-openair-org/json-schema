@@ -1,0 +1,3189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-stoplight": {
+    "id": "prb1gr4o8ef0f"
+  },
+  "$id": "http://www.iata.org/IATA/2025.1/IATA_Baggage_Library.v1.0.0.json",
+  "title": "Baggage JSON Functional Library",
+  "description": "The common definitions from the Baggage domain that can be reused in Baggage standard schemas",
+  "$defs": {
+    "Agency": {
+      "title": "Agency",
+      "description": "An organization which acts on behalf of another.",
+      "type": "object",
+      "required": [
+        "agencyCode"
+      ],
+      "properties": {
+        "agencyCode": {
+          "title": "Agency.Agency Code",
+          "description": "Code of the agency organization.",
+          "$ref": "#/$defs/AgencyCode",
+          "x-stoplight": {
+            "id": "3b31t5cl5q7uf"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "qi18jvczip82j"
+      }
+    },
+    "AgencyCode": {
+      "title": "Agency_ Code",
+      "description": "The agency operator code.",
+      "$ref": "#/$defs/AgencyCodeEnum",
+      "x-stoplight": {
+        "id": "sfrrq8hrif4mw"
+      }
+    },
+    "AgencyCodeEnum": {
+      "title": "Agency Code",
+      "description": "The codelist contents of IATA handling agency organizations.",
+      "type": "string",
+      "pattern": "^[0-9A-Z]{2,20}$",
+      "x-stoplight": {
+        "id": "p7u8dkq4yykc9"
+      }
+    },
+    "Agent": {
+      "title": "Agent",
+      "description": "A Role of an individual person to be a staff of an agency.",
+      "type": "object",
+      "required": [
+        "agency",
+        "individual"
+      ],
+      "properties": {
+        "agency": {
+          "title": "Each Agent must be employed by one and only one Agency",
+          "description": "An organization which acts on behalf of another.",
+          "$ref": "#/$defs/Agency",
+          "x-stoplight": {
+            "id": "9wrrqmbex9bwq"
+          }
+        },
+        "agentIdentifier": {
+          "title": "Agent.Agent Identifier",
+          "description": "Identifier of an agent as assigned by his/her agency.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "26xzuz8forpgt"
+          }
+        },
+        "individual": {
+          "title": "Each Agent must can be one and only one Individual",
+          "description": "A single human being as distinct from a group, class, or family.",
+          "$ref": "#/$defs/Individual",
+          "x-stoplight": {
+            "id": "829p0kfsc1eef"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "di23wn6m2204t"
+      }
+    },
+    "AirlineBagRefIdentifier": {
+      "title": "Airline Bag Reference_ Identifier",
+      "description": "Baggage identifier used for internal usage only (typically used as Julian date on 3 numeric) Example: 100 (100th Julian day)",
+      "type": "string",
+      "x-stoplight": {
+        "id": "crsefwn5pj98b"
+      }
+    },
+    "AirlineDesigCode": {
+      "title": "Airline Designator_ Code",
+      "description": "Either the IATA-defined 2-character code or the ICAO-defined 3-character code of an airline, as per the length of the value.",
+      "$ref": "#/$defs/AirlineDesigCodeEnum",
+      "x-stoplight": {
+        "id": "r3hwof01rms2t"
+      }
+    },
+    "AirlineDesigCodeEnum": {
+      "title": "Airline Designator Code",
+      "description": "The codelist contents of IATA Resolution 762 airline codes, or of ICAO airline codes.",
+      "type": "string",
+      "pattern": "^([A-Z]{3}|[A-Z]{2})|([0-9][A-Z])|([A-Z][0-9])$",
+      "x-stoplight": {
+        "id": "0yof24wi9jc1p"
+      }
+    },
+    "Bag": {
+      "title": "Bag",
+      "description": "A piece of luggage associated with a passenger, packed for traveling, and necessary or appropriate in connection with a journey.",
+      "type": "object",
+      "required": [
+        "bagTag"
+      ],
+      "properties": {
+        "bagTag": {
+          "title": "Each Bag must has one and only one Bag Tag",
+          "description": "A small piece of paper, fabric, plastic or similar material attached to an bag and giving information about it.",
+          "$ref": "#/$defs/BagTag",
+          "x-stoplight": {
+            "id": "1nqcxcswli0cy"
+          }
+        },
+        "dimensions": {
+          "title": "Each Bag may have one and only one Bag Dimensions",
+          "description": "A set of measurable extents of a particular bag, such as length, or height or width.",
+          "$ref": "#/$defs/BagDimensions",
+          "x-stoplight": {
+            "id": "2gi9ibzh8xkra"
+          }
+        },
+        "owner": {
+          "title": "Each Bag may be owned by one and only one Individual",
+          "description": "A single human being as distinct from a group, class, or family.",
+          "$ref": "#/$defs/Individual",
+          "x-stoplight": {
+            "id": "x6fwucn28gt4w"
+          }
+        },
+        "physicalProperties": {
+          "title": "Each Bag may have one and only one Bag Physical Properties",
+          "description": "A set of properties used to characterize a bag, such as weight, color.",
+          "$ref": "#/$defs/BagPhysicalProperties",
+          "x-stoplight": {
+            "id": "47ggzypqhlpdy"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "jzv1b1crmpwa0"
+      }
+    },
+    "BagBasicCode": {
+      "title": "Bag Basic_ Code",
+      "description": "The bag basic code of the physical property measurement",
+      "$ref": "#/$defs/BagBasicCodeEnum",
+      "x-stoplight": {
+        "id": "i9siozgw3el7n"
+      }
+    },
+    "BagBasicCodeEnum": {
+      "title": "Bag Basic Code",
+      "description": "The codelist contents of IATA Resolution 743b Attachment a basic codes",
+      "type": "string",
+      "pattern": "^[A-Z]{1}$",
+      "x-stoplight": {
+        "id": "a9ycprhe9m44u"
+      }
+    },
+    "BagColorCode": {
+      "title": "Bag Color_ Code",
+      "description": "The bag color code of the physical property measurement",
+      "$ref": "#/$defs/BagColorCodeEnum",
+      "x-stoplight": {
+        "id": "738h9zey0w2ru"
+      }
+    },
+    "BagColorCodeEnum": {
+      "title": "Bag Color Code",
+      "description": "The codelist contents of IATA Resolution 743b Attachment a color codes",
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "x-stoplight": {
+        "id": "xwbc076d0jgnr"
+      }
+    },
+    "BagDeleteRequestInd": {
+      "title": "Bag Delete Request_ Indicator",
+      "description": "A request by the airline to delete or mark as deleted the record for this bag as no longer expected for the flight.",
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "30diwsea2aedy"
+      }
+    },
+    "BagDimensions": {
+      "title": "Bag Dimensions",
+      "description": "A set of measurable extents of a particular bag, such as length, or height or width.",
+      "type": "object",
+      "properties": {
+        "heightMeasure": {
+          "title": "Bag Dimensions.Height Measure",
+          "description": "A measurement or extent of something from end to end",
+          "$ref": "#/$defs/LengthMeasure",
+          "x-stoplight": {
+            "id": "dri33weq7odh2"
+          }
+        },
+        "lengthMeasure": {
+          "title": "Bag Dimensions.Length Measure",
+          "description": "A measurement or extent of something from end to end",
+          "$ref": "#/$defs/LengthMeasure",
+          "x-stoplight": {
+            "id": "icgptx0yuffac"
+          }
+        },
+        "widthMeasure": {
+          "title": "Bag Dimensions.Width Measure",
+          "description": "A measurement or extent of something from end to end",
+          "$ref": "#/$defs/LengthMeasure",
+          "x-stoplight": {
+            "id": "udtttjpqttoy9"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "vaq5lwpzixum9"
+      }
+    },
+    "BagExternalFeatureCode": {
+      "title": "Bag External Feature_ Code",
+      "description": "The bag external feature code of the physical property measurement",
+      "$ref": "#/$defs/BagExternalFeatureCodeEnum",
+      "x-stoplight": {
+        "id": "wp2v2r9s2t8my"
+      }
+    },
+    "BagExternalFeatureCodeEnum": {
+      "title": "Bag External Feature Code",
+      "description": "The codelist contents of IATA Resolution 743b Attachment a external feature codes",
+      "type": "string",
+      "pattern": "^[A-Z]{1}$",
+      "x-stoplight": {
+        "id": "ag1ciwuk8db52"
+      }
+    },
+    "BaggageEvent": {
+      "title": "Baggage Event",
+      "description": "A thing that happens in context of baggage logistics. That is a completion and / or commencement of a change, or the outcome of a change, or the arrival of a pre-determined point in time. Specifically, not a thing that takes place.",
+      "type": "object",
+      "required": [
+        "facility",
+        "informedProcess"
+      ],
+      "properties": {
+        "actualDateTime": {
+          "title": "Baggage Event.Actual Date Time",
+          "description": "Actual date and time of the activity.",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "ehf99dibk4fp8"
+          }
+        },
+        "eventTriggerCode": {
+          "title": "Baggage Event.Event Trigger Code",
+          "description": "Event Trigger Qualifier as per RP1745 section 2 .R Augmented Internal Airline Data",
+          "$ref": "#/$defs/EventTriggerCode",
+          "x-stoplight": {
+            "id": "18hcogp79msus"
+          }
+        },
+        "facility": {
+          "title": "Each Baggage Event must takes place at one and only one Facility",
+          "description": "An infrastructure (such as an airfield) that is built, installed, or established to serve a particular purpose Examples: an aircraft stand, a baggage cart, a gate, a high loader",
+          "$ref": "#/$defs/Facility",
+          "x-stoplight": {
+            "id": "lspe7ynpq2wpb"
+          }
+        },
+        "informedProcess": {
+          "title": "Each Trigger must initiate one and only one Trigger",
+          "description": "A series of tasks or steps taken in order to achieve a particular end in the context of baggage logistics.",
+          "$ref": "#/$defs/BaggageProcess",
+          "x-stoplight": {
+            "id": "46ac3r3tgwdbj"
+          }
+        },
+        "outcomeOfProcess": {
+          "title": "Each Baggage Event may be the result of one and only one Baggage Process",
+          "description": "A series of tasks or steps taken in order to achieve a particular end in the context of baggage logistics.",
+          "$ref": "#/$defs/BaggageProcess",
+          "x-stoplight": {
+            "id": "fkentlbvxw3tj"
+          }
+        },
+        "scanner": {
+          "title": "Each Baggage Event may is observed by one and only one Scanner",
+          "description": "A device that scans objects and converts them into or extracts digital data. E.g. document scanner, barcode reader, biometric scanner.",
+          "$ref": "#/$defs/Scanner",
+          "x-stoplight": {
+            "id": "ut545e5zqpp32"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "k05ecbdfl45l2"
+      }
+    },
+    "BaggageFacilityType": {
+      "title": "Baggage Facility Type",
+      "description": "A classification of Facility according to Facility Type",
+      "type": "object",
+      "required": [
+        "baggageFacilityTypeCode"
+      ],
+      "properties": {
+        "baggageFacilityTypeCode": {
+          "title": "Baggage Facility Type.Baggage Facility Type Code",
+          "description": "Codification of type",
+          "$ref": "#/$defs/BaggageFacilityTypeCode",
+          "x-stoplight": {
+            "id": "6axo1oymuw708"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "17bepqkpdrs50"
+      }
+    },
+    "BaggageFacilityTypeCode": {
+      "title": "Baggage Facility Type_ Code",
+      "description": "A code is a character string of letters, numbers, special characters (except escape sequences), and symbols. This code classifies bag handling locations (subset of all locations)",
+      "$ref": "#/$defs/BaggageFacilityTypeCodeEnum",
+      "x-stoplight": {
+        "id": "idz1f8j3l8tsd"
+      }
+    },
+    "BaggageFacilityTypeCodeEnum": {
+      "title": "Baggage Facility Type Code",
+      "description": "PSCRM edition 44 RP1745-Annex 3.1 Additional Recommended Codes for Check in Location Identifier RP1745-Annex 5.1 Location Categories",
+      "type": "string",
+      "pattern": "^[A-Z]{2,4}$",
+      "x-stoplight": {
+        "id": "yanv67qvuzeok"
+      }
+    },
+    "BaggageIncident": {
+      "title": "Baggage Incident",
+      "description": "An Event that occurs spontaneously about a bag, and to which the organization is required to respond.",
+      "type": "object",
+      "required": [
+        "bagIncidentIdentifier"
+      ],
+      "properties": {
+        "bagIncidentIdentifier": {
+          "title": "Baggage Incident.Bag Incident Identifier",
+          "description": "Identifier of the incident.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "7fjs01y1xi3wd"
+          }
+        },
+        "screeningAlarmCode": {
+          "title": "Baggage Incident.Screening Alarm Code",
+          "description": "Code of the screening alarm.",
+          "$ref": "#/$defs/ScreeningAlarmCode",
+          "x-stoplight": {
+            "id": "bfehq8au41ieb"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "017uemuhkzl32"
+      }
+    },
+    "BaggageProcess": {
+      "title": "Baggage Process",
+      "description": "A series of tasks or steps taken in order to achieve a particular end in the context of baggage logistics.",
+      "type": "object",
+      "required": [
+        "baggageEvent",
+        "baggageProcessCode"
+      ],
+      "properties": {
+        "agent": {
+          "title": "Each Baggage Process may be participated by one or more Agents",
+          "description": "A Role of an individual person to be a staff of an agency.",
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/Agent",
+            "x-stoplight": {
+              "id": "r1996ba0pctli"
+            }
+          },
+          "x-stoplight": {
+            "id": "5zwrvnru5p13n"
+          }
+        },
+        "baggageEvent": {
+          "title": "Each Baggage Process must one and only one Baggage Event",
+          "description": "A thing that happens in context of baggage logistics. That is a completion and / or commencement of a change, or the outcome of a change, or the arrival of a pre-determined point in time. Specifically, not a thing that takes place.",
+          "$ref": "#/$defs/BaggageEvent",
+          "x-stoplight": {
+            "id": "yyf0qpzl4u8fc"
+          }
+        },
+        "baggageProcessCode": {
+          "title": "Baggage Process.Baggage Process Code",
+          "description": "Top level baggage process name. Distinguishes between Local departing baggage (L), Transfer arriving baggage (F), Transfer departing baggage (T), and Terminating arriving baggage (X)",
+          "$ref": "#/$defs/BaggageProcessCode",
+          "x-stoplight": {
+            "id": "avi1vep2xmdm4"
+          }
+        },
+        "baggageSubProcessCode": {
+          "title": "Baggage Process.Baggage Sub Process Code",
+          "description": "Secondary level baggage process naming Follows baggage journey (bag, cart, ULD)",
+          "$ref": "#/$defs/BaggageSubProcessCode",
+          "x-stoplight": {
+            "id": "xqgcmzwzx23ak"
+          }
+        },
+        "baggageSubSubProcessCode": {
+          "title": "Baggage Process.Baggage Sub Sub Process Code",
+          "description": "Tertiary level of baggage process identification Reports the task level",
+          "$ref": "#/$defs/BaggageSubSubProcessCode",
+          "x-stoplight": {
+            "id": "2r3bln1whonis"
+          }
+        },
+        "descText": {
+          "title": "Baggage Process.Description Text",
+          "description": "Description of the process",
+          "$ref": "#/$defs/Text",
+          "x-stoplight": {
+            "id": "qlnedq2yd14tm"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "dh8ypwdf54ho0"
+      }
+    },
+    "BaggageProcessCode": {
+      "title": "Baggage Process_ Code",
+      "description": "The baggage process code of the process interaction",
+      "$ref": "#/$defs/BaggageProcessCodeEnum",
+      "x-stoplight": {
+        "id": "mjmvvpn3t0l18"
+      }
+    },
+    "BaggageProcessCodeEnum": {
+      "title": "Baggage Process Code",
+      "description": "The codelist contents of IATA Recommendation 1745 Attachment A Process Source Indicator Codes Valid Values: F - Arrivals (transfering) Process; L - Departing Process; T - Transfering Process (Departure); X - Arrivals (Terminating) Process",
+      "type": "string",
+      "enum": [
+        "F",
+        "L",
+        "T",
+        "X"
+      ],
+      "x-stoplight": {
+        "id": "y6ngbsam5wnch"
+      }
+    },
+    "BaggageStatuses": {
+      "title": "Baggage Statuses",
+      "description": "A set of statuses of baggage at a particular time in a process.",
+      "type": "object",
+      "properties": {
+        "conformanceStateCode": {
+          "title": "Baggage Statuses.Conformance State Code",
+          "description": "Expresses conformance enforcements over the baggage item closed, sealed, screened, inspected, verified, reconciled",
+          "$ref": "#/$defs/ConformanceStateCode",
+          "x-stoplight": {
+            "id": "ke699l42p12bw"
+          }
+        },
+        "controlStateCode": {
+          "title": "Baggage Statuses.Control State Code",
+          "description": "Expresses control over the baggage item",
+          "$ref": "#/$defs/ControlStateCode",
+          "x-stoplight": {
+            "id": "y4cg4kkssiwma"
+          }
+        },
+        "incidentStateCode": {
+          "title": "Baggage Statuses.Incident State Code",
+          "description": "Tracks various incidents",
+          "$ref": "#/$defs/IncidentStateCode",
+          "x-stoplight": {
+            "id": "25cvx1d73td1j"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "ef3b9ebbbo1jk"
+      }
+    },
+    "BaggageSubProcessCode": {
+      "title": "Baggage Sub Process_ Code",
+      "description": "The baggage sub processcode of the process interaction",
+      "$ref": "#/$defs/BaggageSubProcessCodeEnum",
+      "x-stoplight": {
+        "id": "7u3cr4fq1q5l2"
+      }
+    },
+    "BaggageSubProcessCodeEnum": {
+      "title": "Baggage Sub Process Code",
+      "description": "To be named Valid Values: Acquire - Acquire from bagdrop or transfer; Deliver - Deliver step to passenger, or to transfer airline; Inspect - Inspection by customs step; Load - Loading step; Package - Packaging Step; Screen - Screening step; Unload - Unloading step",
+      "type": "string",
+      "enum": [
+        "Acquire",
+        "Deliver",
+        "Inspect",
+        "Load",
+        "Package",
+        "Screen",
+        "Unload"
+      ],
+      "x-stoplight": {
+        "id": "7z9coa5edotfy"
+      }
+    },
+    "BaggageSubSubProcessCode": {
+      "title": "Baggage Sub Sub Process_ Code",
+      "description": "The baggage sub sub process code of the process interaction",
+      "$ref": "#/$defs/BaggageSubSubProcessCodeEnum",
+      "x-stoplight": {
+        "id": "q8zz4qpjrehaf"
+      }
+    },
+    "BaggageSubSubProcessCodeEnum": {
+      "title": "Baggage Sub Sub Process Code",
+      "description": "The codelist contents of IATA Baggage XML Baggage Sub Sub Process Codes",
+      "type": "string",
+      "x-stoplight": {
+        "id": "lv225fckopaao"
+      }
+    },
+    "BaggageTypeCode": {
+      "title": "Baggage Type_ Code",
+      "description": "The baggage type code of the physical property measurement",
+      "$ref": "#/$defs/BaggageTypeCodeEnum",
+      "x-stoplight": {
+        "id": "85a01w3wlj7vv"
+      }
+    },
+    "BaggageTypeCodeEnum": {
+      "title": "Baggage Type Code",
+      "description": "The codelist contents of IATA Resolution 743b Attachment A: Baggage Types",
+      "type": "string",
+      "pattern": "^[0-9]{2}|[0-9][0-9][A-Z]$",
+      "x-stoplight": {
+        "id": "pf1vwbqb4i00v"
+      }
+    },
+    "BagMaterialCode": {
+      "title": "Bag Material_ Code",
+      "description": "The bag material code of the physical property measurement",
+      "$ref": "#/$defs/BagMaterialCodeEnum",
+      "x-stoplight": {
+        "id": "n2ww43omwkfy2"
+      }
+    },
+    "BagMaterialCodeEnum": {
+      "title": "Bag Material Code",
+      "description": "The codelist contents of IATA Resolution 743b Attachment a. material codes",
+      "type": "string",
+      "pattern": "^[A-Z]{1}$",
+      "x-stoplight": {
+        "id": "4p6x7lz3w0ebw"
+      }
+    },
+    "BagPhysicalProperties": {
+      "title": "Bag Physical Properties",
+      "description": "A set of properties used to characterize a bag, such as weight, color.",
+      "type": "object",
+      "properties": {
+        "baggageTypeCode": {
+          "title": "Bag Physical Properties.Baggage Type Code",
+          "description": "Descriptive code of the physical property measurement. Refer to resolution 743b baggage type codes.",
+          "$ref": "#/$defs/BaggageTypeCode",
+          "x-stoplight": {
+            "id": "dbviyl5b1tawy"
+          }
+        },
+        "basicCode": {
+          "title": "Bag Physical Properties.Basic Code",
+          "description": "Basic code of the physical property measurement. Refer to resolution 743b basic element codes.",
+          "$ref": "#/$defs/BagBasicCode",
+          "x-stoplight": {
+            "id": "zj3xgz5g688q9"
+          }
+        },
+        "colorCode": {
+          "title": "Bag Physical Properties.Color Code",
+          "description": "Color of the physical property measurement. Refer to resolution 743b color codes.",
+          "$ref": "#/$defs/BagColorCode",
+          "x-stoplight": {
+            "id": "zwdhx815oo296"
+          }
+        },
+        "descriptivePictureUri": {
+          "title": "Bag Physical Properties.Descriptive Picture URI",
+          "description": "Descriptive picture of physical property measurement.",
+          "$ref": "#/$defs/Uri",
+          "x-stoplight": {
+            "id": "c5cpgs89wzpns"
+          }
+        },
+        "externalFeatureCode": {
+          "title": "Bag Physical Properties.External Feature Code",
+          "description": "External feature of the physical property measurement. Refer to resolution 743b external element codes.",
+          "$ref": "#/$defs/BagExternalFeatureCode",
+          "x-stoplight": {
+            "id": "plwcvju5hnhn7"
+          }
+        },
+        "materialCode": {
+          "title": "Bag Physical Properties.Material Code",
+          "description": "Material code of the physical property measurement. Refer to resolution 743b description codes.",
+          "$ref": "#/$defs/BagMaterialCode",
+          "x-stoplight": {
+            "id": "jjnwuc3m6cvku"
+          }
+        },
+        "weightAllowanceMeasure": {
+          "title": "Bag Physical Properties.Weight Allowance Measure",
+          "description": "Allowance for Weight for a single Bag",
+          "$ref": "#/$defs/WeightMeasure",
+          "x-stoplight": {
+            "id": "l5ngs1dywadzy"
+          }
+        },
+        "weightMeasure": {
+          "title": "Bag Physical Properties.Weight Measure",
+          "description": "A measurement of the heaviness of a bag. Only checked weight supported.",
+          "$ref": "#/$defs/WeightMeasure",
+          "x-stoplight": {
+            "id": "z93uw7r7cbp9a"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "s6cbaeqqb5cre"
+      }
+    },
+    "BagRemovalRequestInd": {
+      "title": "Bag Removal Request_ Indicator",
+      "description": "An indicator set by the airline to unload a loaded bag, Should be set with the authorization to load set to NO.",
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "rwycq3v8f9xmg"
+      }
+    },
+    "BagSegment": {
+      "title": "Bag Segment",
+      "description": "An allocation of a bag to a specific set of consecutive legs and a load position in vehicle performing the legs",
+      "type": "object",
+      "required": [
+        "bag",
+        "baggageProcess",
+        "carryingSegment"
+      ],
+      "properties": {
+        "bag": {
+          "title": "Each Bag Segment must refers to one and only one Bag",
+          "description": "A piece of luggage associated with a passenger, packed for traveling, and necessary or appropriate in connection with a journey.",
+          "$ref": "#/$defs/Bag",
+          "x-stoplight": {
+            "id": "pxrhnku5bquz7"
+          }
+        },
+        "baggageProcess": {
+          "title": "Each Bag Segment must be subject of one and only one Baggage Process",
+          "description": "A series of tasks or steps taken in order to achieve a particular end in the context of baggage logistics.",
+          "$ref": "#/$defs/BaggageProcess",
+          "x-stoplight": {
+            "id": "irzqgxejri8ei"
+          }
+        },
+        "baggageState": {
+          "title": "Each Bag Segment may results in one and only one Baggage Statuses",
+          "description": "A set of statuses of baggage at a particular time in a process.",
+          "$ref": "#/$defs/BaggageStatuses",
+          "x-stoplight": {
+            "id": "kpennw6tqac27"
+          }
+        },
+        "carryingSegment": {
+          "title": "Each Bag Segment must is part of one and only one Dated Operating Segment",
+          "description": "An operation between board point and any subsequent off point within the same flight designator. Could be one or more legs. Could also be used for other transport vehicles such as train or bus etc.",
+          "$ref": "#/$defs/DatedOperatingSegment",
+          "x-stoplight": {
+            "id": "la3tfewwvpz85"
+          }
+        },
+        "changeIndCode": {
+          "title": "Bag Segment.Change Indicator Code",
+          "description": "Code of change indicator.",
+          "$ref": "#/$defs/ChangeIndCode",
+          "x-stoplight": {
+            "id": "nqbhfua3k3skg"
+          }
+        },
+        "classOfService": {
+          "title": "Each Bag Segment may have one and only one RBD",
+          "description": "A categorization used to facilitate access to inventory, application of filed fares, and to identify cabin entitlement. For example: 'J' for Business Class Premium, 'D' for Business Discounted.",
+          "$ref": "#/$defs/Rbd",
+          "x-stoplight": {
+            "id": "kaogd2va48c00"
+          }
+        },
+        "classOfServiceCode": {
+          "title": "Bag Segment.Class Of Service Code",
+          "description": "Code used to identify a particular Reservations Booking Designator. For example: P, J, W, M.",
+          "$ref": "#/$defs/RbdCode",
+          "x-stoplight": {
+            "id": "2grs4v507j59g"
+          }
+        },
+        "collection": {
+          "title": "Each Bag Segment may is in one and only one Collection",
+          "description": "A collection reports when an item is (planned to be) collected at a facility potentially using a vehicle",
+          "$ref": "#/$defs/Collection",
+          "x-stoplight": {
+            "id": "1qc95h0473x8j"
+          }
+        },
+        "delivery": {
+          "title": "Each Bag Segment may is in one and only one Delivery",
+          "description": "A delivery reports when an item is (planned to be) delivered at a facility potentially using a vehicle",
+          "$ref": "#/$defs/Delivery",
+          "x-stoplight": {
+            "id": "e6312otm00el3"
+          }
+        },
+        "exception": {
+          "title": "Each Bag Segment may is refering to one or more Bag Segment Exceptions",
+          "description": "Baggage Exception as per RP1745 Attachment A Section 1",
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/BagSegmentException",
+            "x-stoplight": {
+              "id": "wg9uc41gtlof5"
+            }
+          },
+          "x-stoplight": {
+            "id": "c9wblydnm28fb"
+          }
+        },
+        "holdCompartment": {
+          "title": "Each Bag Segment may load in one and only one Hold Compartment",
+          "description": "A space designated within a hold that can be containerized/palletized or not.",
+          "$ref": "#/$defs/HoldCompartment",
+          "x-stoplight": {
+            "id": "85ufvo6s0f4yp"
+          }
+        },
+        "internalAirlineData": {
+          "title": "Bag Segment.Internal Airline Data",
+          "description": "For airline to determine its use and meaning in extension of standard",
+          "$ref": "#/$defs/InternalAirlineDataText",
+          "x-stoplight": {
+            "id": "sjbiobburfqtf"
+          }
+        },
+        "loadSeqOrdinal": {
+          "title": "Bag Segment.Load Sequence Ordinal",
+          "description": "This is the sequence number in which the baggage item was loaded into the stowage device.",
+          "$ref": "#/$defs/Ordinal",
+          "x-stoplight": {
+            "id": "e9kguwgvpgmb7"
+          }
+        },
+        "loyaltyProgramAccount": {
+          "title": "Each Bag Segment may be handled according to one and only one Loyalty Program Account",
+          "description": "An account set up for a customer within a rewards program which holds funds on behalf of that customer.",
+          "$ref": "#/$defs/LoyaltyProgramAccount",
+          "x-stoplight": {
+            "id": "z6s7q5mzu1z59"
+          }
+        },
+        "packIntoCart": {
+          "title": "Each Bag Segment may pack into one and only one Cart Ride",
+          "description": "A use of a baggage cart to package a collection of bags of same segregation for transport between terminal and aircraft stand",
+          "$ref": "#/$defs/CartRide",
+          "x-stoplight": {
+            "id": "gxsbxv2csmrp9"
+          }
+        },
+        "packIntoUld": {
+          "title": "Each Bag Segment may pack into one and only one ULD Allocation",
+          "description": "An allocation of a ULD to a specific set of legs and a load position in vehicle performing the legs",
+          "$ref": "#/$defs/UldAllocation",
+          "x-stoplight": {
+            "id": "iz3z3h1w924t1"
+          }
+        },
+        "securityNumber": {
+          "title": "Bag Segment.Security Number",
+          "description": "Security Number as per RP1739",
+          "$ref": "#/$defs/SecurityControlNumber",
+          "x-stoplight": {
+            "id": "3bjvfy1m3vt5q"
+          }
+        },
+        "segmentSecurityControls": {
+          "title": "Each Bag Segment may have one and only one Segment Security Controls",
+          "description": "A set of principles or procedures according to which something is done on a particular segment of travel.",
+          "$ref": "#/$defs/SegmentSecurityControls",
+          "x-stoplight": {
+            "id": "5o39fs2jjqrgi"
+          }
+        },
+        "segmentSecurityOutcomes": {
+          "title": "Each Bag Segment may has one and only one Segment Security Outcomes",
+          "description": "A set of outcomes of applying Segment Security Controls to Baggage Process",
+          "$ref": "#/$defs/SegmentSecurityOutcomes",
+          "x-stoplight": {
+            "id": "26lhgo6abh6zr"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "9s25l7jvcnuba"
+      }
+    },
+    "BagSegmentException": {
+      "title": "Bag Segment Exception",
+      "description": "Baggage Exception as per RP1745 Attachment A Section 1",
+      "type": "object",
+      "properties": {
+        "exceptionCode": {
+          "title": "Bag Segment Exception.Exception Code",
+          "description": "Exception code of the exception control. An exception control is a item that is excluded from a general statement or does not follow a rule.",
+          "$ref": "#/$defs/ExceptionCode",
+          "x-stoplight": {
+            "id": "9dd1z0ob1rduu"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "91ytpeprhfkfy"
+      }
+    },
+    "BagTag": {
+      "title": "Bag Tag",
+      "description": "A small piece of paper, fabric, plastic or similar material attached to an bag and giving information about it.",
+      "type": "object",
+      "required": [
+        "issuerCode",
+        "serialNumberIdentifier",
+        "usageCode"
+      ],
+      "properties": {
+        "airlineBagRefIdentifier": {
+          "title": "Bag Tag.Airline Bag Reference Identifier",
+          "description": "Baggage identifier used for internal usage only (typically used as Julian date on 3 numeric)",
+          "$ref": "#/$defs/AirlineBagRefIdentifier",
+          "x-stoplight": {
+            "id": "abpczv0a0sv5j"
+          }
+        },
+        "issuerCode": {
+          "title": "Bag Tag.Issuer Code",
+          "description": "Baggage tag issuer codes, combined with the tag serial number, are used to identify each piece of checked luggage through all baggage handling processes. Refer to Resolution 769 Bag Tag Issuer Codes",
+          "$ref": "#/$defs/BagTagIssuerCode",
+          "x-stoplight": {
+            "id": "uxmm1z1a3ycqs"
+          }
+        },
+        "issuingAgency": {
+          "title": "Each Bag Tag may be used by one and only one Agency",
+          "description": "An organization which acts on behalf of another.",
+          "$ref": "#/$defs/Agency",
+          "x-stoplight": {
+            "id": "lwywhjmkd92hs"
+          }
+        },
+        "issuingAgent": {
+          "title": "Each Bag Tag may be issued by one and only one Agent",
+          "description": "A Role of an individual person to be a staff of an agency.",
+          "$ref": "#/$defs/Agent",
+          "x-stoplight": {
+            "id": "wu1zabjbplzth"
+          }
+        },
+        "printer": {
+          "title": "Each Bag Tag may be printed by one and only one Printer",
+          "description": "A device for printing text or pictures or barcodes, especially one linked to a computer.",
+          "$ref": "#/$defs/Printer",
+          "x-stoplight": {
+            "id": "28td32q7z4n0m"
+          }
+        },
+        "scanningAgent": {
+          "title": "Each Bag Tag may be scanned one and only one Agent",
+          "description": "A Role of an individual person to be a staff of an agency.",
+          "$ref": "#/$defs/Agent",
+          "x-stoplight": {
+            "id": "79ycfv7b1wgas"
+          }
+        },
+        "serialNumberIdentifier": {
+          "title": "Bag Tag.Serial Number Identifier",
+          "description": "With Bag Tag Serial Number Code a Bag Tag Issuer may identify bags of her interest. See Resolution 740 Interline Bag Tag",
+          "$ref": "#/$defs/BagTagSerialNumberIdentifier",
+          "x-stoplight": {
+            "id": "al3a6yj14011s"
+          }
+        },
+        "transponderIdentifier": {
+          "title": "Bag Tag.Transponder Identifier",
+          "description": "Unique Transponder identifier, known as TID for Transponder identification",
+          "$ref": "#/$defs/TransponderIdentifier",
+          "x-stoplight": {
+            "id": "6m7h2jqlqv24t"
+          }
+        },
+        "usageCode": {
+          "title": "Bag Tag.Usage Code",
+          "description": "With Bag Tag Usage Code a Bag Tag Issuer may differentiate use of the tag. See Resolution 740 Section 3 Use of Tags",
+          "$ref": "#/$defs/BagTagUsageCode",
+          "x-stoplight": {
+            "id": "7tmwuhwfe9s8d"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "xaehh6fgsd4el"
+      }
+    },
+    "BagTagIssuerCode": {
+      "title": "Bag Tag Issuer_ Code",
+      "description": "Baggage tag issuer codes, combined with the tag serial number, are used to identify each piece of checked luggage through all baggage handling processes",
+      "$ref": "#/$defs/BagTagIssuerCodeEnum",
+      "x-stoplight": {
+        "id": "vbxjillee8aub"
+      }
+    },
+    "BagTagIssuerCodeEnum": {
+      "title": "Bag Tag Issuer Code",
+      "description": "Baggage tag issuer codes, combined with the tag serial number, are used to identify each piece of checked luggage through all baggage handling processes",
+      "type": "string",
+      "pattern": "^[0-9]{3}$",
+      "x-stoplight": {
+        "id": "2ft00ah0ioewx"
+      }
+    },
+    "BagTagSerialNumberIdentifier": {
+      "title": "Bag Tag Serial Number_ Identifier",
+      "description": "With Bag Tag Serial Number Code a Bag Tag Issuer may identify bags of her interest. See Resolution 740 Interline Bag Tag",
+      "type": "string",
+      "x-stoplight": {
+        "id": "wfocdnp0xizt7"
+      }
+    },
+    "BagTagStatusCode": {
+      "title": "Bag Tag Status_ Code",
+      "description": "Determines whether bag is authorized to load",
+      "$ref": "#/$defs/BagTagStatusCodeEnum",
+      "x-stoplight": {
+        "id": "4pj0r15frm7i8"
+      }
+    },
+    "BagTagStatusCodeEnum": {
+      "title": "Bag Tag Status Code",
+      "description": "Determines whether bag is authorized to load Valid Values: A - Active; I - Inactive; V - Validated",
+      "type": "string",
+      "enum": [
+        "A",
+        "I",
+        "V"
+      ],
+      "x-stoplight": {
+        "id": "a96kasvtjvlwi"
+      }
+    },
+    "BagTagUsageCode": {
+      "title": "Bag Tag Usage_ Code",
+      "description": "With Bag Tag Usage Code a Bag Tag Issuer may differentiate use of the tag. See Resolution 740 Section 3 Use of Tags",
+      "$ref": "#/$defs/BagTagUsageCodeEnum",
+      "x-stoplight": {
+        "id": "7hk9bcos6lft8"
+      }
+    },
+    "BagTagUsageCodeEnum": {
+      "title": "Bag Tag Usage Code",
+      "description": "With Bag Tag Usage Code a Bag Tag Issuer may differentiate use of the tag. See Resolution 740 Section 3 Use of Tags",
+      "type": "string",
+      "pattern": "^[02-9]$",
+      "x-stoplight": {
+        "id": "stcddtz72ep31"
+      }
+    },
+    "BoardingStatusCode": {
+      "title": "Boarding Status_ Code",
+      "description": "The boarding status code of the individual party status",
+      "$ref": "#/$defs/BoardingStatusCodeEnum",
+      "x-stoplight": {
+        "id": "i140sppflq9q1"
+      }
+    },
+    "BoardingStatusCodeEnum": {
+      "title": "Boarding Status Code",
+      "description": "The codelist contents of IATA Recommendation 1745 Attachment a baggage status codes for Boarding status. Valid Values: B - Passenger boarded.; C - Passenger checked-in.; N - Passenger not checked-in.; S - Passenger on standby",
+      "type": "string",
+      "enum": [
+        "B",
+        "C",
+        "N",
+        "S"
+      ],
+      "x-stoplight": {
+        "id": "uwomunh724t71"
+      }
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "A booking or reservation.",
+      "type": "object",
+      "properties": {
+        "bookingIdentifier": {
+          "title": "Booking.Booking Identifier",
+          "description": "Booking reference Identifier, also called Record Locator (6 characters).",
+          "$ref": "#/$defs/BookingRefIdentifier",
+          "x-stoplight": {
+            "id": "sfufmxcr1u4ee"
+          }
+        },
+        "bookingRefCompanyCode": {
+          "title": "Booking.Booking Reference Company Code",
+          "description": "Code of company having issued the booking reference identifier.",
+          "$ref": "#/$defs/BookingRefCompanyCode",
+          "x-stoplight": {
+            "id": "y1nux2hr0radk"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "y6utim74um4fc"
+      }
+    },
+    "BookingRefCompanyCode": {
+      "title": "Booking Reference Company_ Code",
+      "description": "Code of company having issued the booking reference identifier.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "itw8316e6azrm"
+      }
+    },
+    "BookingRefIdentifier": {
+      "title": "Booking Reference_ Identifier",
+      "description": "Booking reference Identifier, also called Record Locator (6 characters).",
+      "type": "string",
+      "x-stoplight": {
+        "id": "fdtdlvlcbiexh"
+      }
+    },
+    "CarriageMediumCode": {
+      "title": "Carriage Medium_ Code",
+      "description": "The usage category code of the transport",
+      "$ref": "#/$defs/CarriageMediumCodeEnum",
+      "x-stoplight": {
+        "id": "jlp1ngbm1s4dk"
+      }
+    },
+    "CarriageMediumCodeEnum": {
+      "title": "Carriage Medium Code",
+      "description": "The codelist contents of IATA Recommendation 1745 Attachment a carriage medium codes Valid Values: AV - Airline VAN; CO - Courier Van; CR - Car Rental VAN; CS - Cruise Ship; HV - Hotel VAN; RA - Rail",
+      "type": "string",
+      "enum": [
+        "AV",
+        "CO",
+        "CR",
+        "CS",
+        "HV",
+        "RA"
+      ],
+      "x-stoplight": {
+        "id": "ajujl7llvr45z"
+      }
+    },
+    "Carrier": {
+      "title": "Carrier",
+      "description": "An organization operating transport vehicles for commercial purposes which offers transport services, both scheduled or non-scheduled, to the public for carriage of passengers and their baggage, mail and/or cargo and is certified for such purposes by an authority of the state in which it is established.",
+      "type": "object",
+      "required": [
+        "carrierDesigCode"
+      ],
+      "properties": {
+        "carrierDesigCode": {
+          "title": "Carrier.Carrier Designator Code",
+          "description": "ICAO-defined 3-character code or IATA-defined 2-character code assigned to the carrier. For example: BA is British Airways PLC, 2C is SNCF and is also CMA CGM Air Cargo.",
+          "$ref": "#/$defs/AirlineDesigCode",
+          "x-stoplight": {
+            "id": "0x9ln0auwd2ap"
+          }
+        },
+        "duplicateDesigInd": {
+          "title": "Carrier.Duplicate Designator Indicator",
+          "description": "Indicates that the carrier designator code is a duplicate code shared by multiple carriers. In this case to uniquely identify the carrier the carrier name must be specified in addition to the carrier designator code.",
+          "$ref": "#/$defs/Ind",
+          "x-stoplight": {
+            "id": "mf5q30tdv7ssf"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "sfw8w2ly414dw"
+      }
+    },
+    "Cart": {
+      "title": "Cart",
+      "description": "A cart may be used to transport baggage or cargo over the airport has wheels, offers a platform, has towing interface see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART",
+      "type": "object",
+      "properties": {
+        "cartIdentifier": {
+          "title": "Cart.Cart Identifier",
+          "description": "May identify individual cars",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "ohqj0tbfroci7"
+          }
+        },
+        "cartType": {
+          "title": "Each Cart may be qualified by one and only one Cart Type",
+          "description": "A qualification of a Cart as BAGGAGE or CARGO CART see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART",
+          "$ref": "#/$defs/CartType",
+          "x-stoplight": {
+            "id": "kkv88bccjgnwl"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "l4pbdaaglmpuv"
+      }
+    },
+    "CartRide": {
+      "title": "Cart Ride",
+      "description": "A use of a baggage cart to package a collection of bags of same segregation for transport between terminal and aircraft stand",
+      "type": "object",
+      "required": [
+        "baggageProcess",
+        "cart",
+        "transportArrival",
+        "transportDep"
+      ],
+      "properties": {
+        "baggageProcess": {
+          "title": "Each Cart Ride must be subject of one and only one Baggage Process",
+          "description": "A series of tasks or steps taken in order to achieve a particular end in the context of baggage logistics.",
+          "$ref": "#/$defs/BaggageProcess",
+          "x-stoplight": {
+            "id": "tf48we65eifc0"
+          }
+        },
+        "baggageState": {
+          "title": "Each Cart Ride may results in one and only one Baggage Statuses",
+          "description": "A set of statuses of baggage at a particular time in a process.",
+          "$ref": "#/$defs/BaggageStatuses",
+          "x-stoplight": {
+            "id": "s9iuyfchwi9qb"
+          }
+        },
+        "cart": {
+          "title": "Each Cart Ride must refers to one and only one Cart",
+          "description": "A cart may be used to transport baggage or cargo over the airport has wheels, offers a platform, has towing interface see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART",
+          "$ref": "#/$defs/Cart",
+          "x-stoplight": {
+            "id": "nnggangsvdzsg"
+          }
+        },
+        "changeIndCode": {
+          "title": "Cart Ride.Change Indicator Code",
+          "description": "Code of change indicator. (NEW,CHG,DEL).",
+          "$ref": "#/$defs/ChangeIndCode",
+          "x-stoplight": {
+            "id": "ttmfa3juh9mz6"
+          }
+        },
+        "classOfService": {
+          "title": "Each Cart Ride may have one and only one RBD",
+          "description": "A categorization used to facilitate access to inventory, application of filed fares, and to identify cabin entitlement. For example: 'J' for Business Class Premium, 'D' for Business Discounted.",
+          "$ref": "#/$defs/Rbd",
+          "x-stoplight": {
+            "id": "lu3xzwyx5mdg4"
+          }
+        },
+        "classOfServiceCode": {
+          "title": "Cart Ride.Class Of Service Code",
+          "description": "Code used to identify a particular RBD. For example: P, J, W, M.",
+          "$ref": "#/$defs/RbdCode",
+          "x-stoplight": {
+            "id": "vsrneqc16s15q"
+          }
+        },
+        "collection": {
+          "title": "Each Cart Ride may is in one and only one Collection",
+          "description": "A collection reports when an item is (planned to be) collected at a facility potentially using a vehicle",
+          "$ref": "#/$defs/Collection",
+          "x-stoplight": {
+            "id": "o2jbe3pcu1t4u"
+          }
+        },
+        "commodityCode": {
+          "title": "Cart Ride.Commodity Code",
+          "description": "Code set used with ULDs for segregation of bags and/or cargo for efficient load and unload from the aircraft and subsequent ground operations. Load information codes, known also as commodity codes, are defined by but not limited to IATA Load Control - AHM 510, 1.1.",
+          "$ref": "#/$defs/CommodityCode",
+          "x-stoplight": {
+            "id": "8ouenj9ig4x0b"
+          }
+        },
+        "delivery": {
+          "title": "Each Cart Ride may is in one and only one Delivery",
+          "description": "A delivery reports when an item is (planned to be) delivered at a facility potentially using a vehicle",
+          "$ref": "#/$defs/Delivery",
+          "x-stoplight": {
+            "id": "iswrzx6teq12m"
+          }
+        },
+        "holdCompartment": {
+          "title": "Each Cart Ride may one and only one Hold Compartment",
+          "description": "A space designated within a hold that can be containerized/palletized or not.",
+          "$ref": "#/$defs/HoldCompartment",
+          "x-stoplight": {
+            "id": "hwnza531twwte"
+          }
+        },
+        "internalAirlineData": {
+          "title": "Cart Ride.Internal Airline Data",
+          "description": "Internal Airline Data",
+          "$ref": "#/$defs/InternalAirlineDataText",
+          "x-stoplight": {
+            "id": "wmtb06br9v124"
+          }
+        },
+        "transportArrival": {
+          "title": "Each Cart Ride must support one and only one Transport Arrival",
+          "description": "An action or process of arriving of a transport vehicle in any place or location. Superseded by Aircraft Arrival.",
+          "$ref": "#/$defs/TransportArrival",
+          "x-stoplight": {
+            "id": "js9o0dcfr6ga2"
+          }
+        },
+        "transportDep": {
+          "title": "Each Cart Ride must support one and only one Transport Departure",
+          "description": "An action or process of leaving of a transport vehicle from any place or location. Superseded by Aircraft Departure.",
+          "$ref": "#/$defs/TransportDep",
+          "x-stoplight": {
+            "id": "6ttz58dhgfmw6"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "keaxdei43ikrv"
+      }
+    },
+    "CartType": {
+      "title": "Cart Type",
+      "description": "A qualification of a Cart as BAGGAGE or CARGO CART see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART",
+      "type": "object",
+      "required": [
+        "cartTypeCode"
+      ],
+      "properties": {
+        "cartTypeCode": {
+          "title": "Cart Type.Cart Type Code",
+          "description": "A qualification of a Cart as BAGGAGE or CARGO CART see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART",
+          "$ref": "#/$defs/CartTypeCode",
+          "x-stoplight": {
+            "id": "64w82wj47bgs8"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "fdyzfwsfy6lt2"
+      }
+    },
+    "CartTypeCode": {
+      "title": "Cart Type_ Code",
+      "description": "A qualification of a Cart as BAGGAGE or CARGO CART see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART",
+      "$ref": "#/$defs/CartTypeCodeEnum",
+      "x-stoplight": {
+        "id": "qvea9yfpblsa0"
+      }
+    },
+    "CartTypeCodeEnum": {
+      "title": "Cart Type Code",
+      "description": "A qualification of a Cart as BAGGAGE or CARGO CART see AHM 963: FUNCTIONAL SPECIFICATION FOR A BAGGAGE/CARGO CART Valid Values: Baggage - Cart used to transport baggage; Cargo - Cart to use for moving cargo",
+      "type": "string",
+      "enum": [
+        "Baggage",
+        "Cargo"
+      ],
+      "x-stoplight": {
+        "id": "lulralmndcy7c"
+      }
+    },
+    "ChangeIndCode": {
+      "title": "Change Indicator_ Code",
+      "description": "The change indicator code of the bag movement",
+      "type": "object",
+      "properties": {},
+      "x-stoplight": {
+        "id": "xyyfi0wiycqfm"
+      }
+    },
+    "City": {
+      "title": "City",
+      "description": "A City (e.g., Dublin), town, or postal station (i.e., a postal service territory, often used in a military address, or metropolitan area)",
+      "type": "object",
+      "required": [
+        "cityName"
+      ],
+      "properties": {
+        "cityName": {
+          "title": "City.City Name",
+          "description": "The name, expressed as text, of the city, town or village.",
+          "$ref": "#/$defs/ProperName",
+          "x-stoplight": {
+            "id": "qpm8k3z5s2fs7"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "aru8amhqwodmx"
+      }
+    },
+    "Code": {
+      "title": "Code",
+      "description": "A code is a character string of letters, numbers, special characters (except escape sequences), and symbols.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "p9tpd47xa89at"
+      }
+    },
+    "Collection": {
+      "title": "Collection",
+      "description": "A collection reports when an item is (planned to be) collected at a facility potentially using a vehicle",
+      "type": "object",
+      "properties": {
+        "earliestDateTime": {
+          "title": "Collection.Earliest Date Time",
+          "description": "Earliest or targetted time for collection",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "4iveemmz68fcl"
+          }
+        },
+        "facility": {
+          "title": "Each Collection may from one and only one Facility",
+          "description": "An infrastructure (such as an airfield) that is built, installed, or established to serve a particular purpose Examples: an aircraft stand, a baggage cart, a gate, a high loader",
+          "$ref": "#/$defs/Facility",
+          "x-stoplight": {
+            "id": "deqxzy8lakhbl"
+          }
+        },
+        "latestDateTime": {
+          "title": "Collection.Latest Date Time",
+          "description": "Latest time for collection",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "344777xkrk0au"
+          }
+        },
+        "surfaceTransportVehicle": {
+          "title": "Each Collection may using one and only one Surface Transport Vehicle",
+          "description": "A means used for transporting people or goods, on land or water. E.g. train, bus, van, ship.",
+          "$ref": "#/$defs/SurfaceTransportVehicle",
+          "x-stoplight": {
+            "id": "ct3vxhddycfmy"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "soq8nlvjsiyay"
+      }
+    },
+    "CommodityCode": {
+      "title": "Commodity_ Code",
+      "description": "Code set used with ULDs for segregation of bags and/or cargo for efficient load and unload from the aircraft and subsequent ground operations. Load information codes, known also as commodity codes, are defined by but not limited to IATA Load Control - AHM 510, 1.1.",
+      "$ref": "#/$defs/CommodityCodeEnum",
+      "x-stoplight": {
+        "id": "c0lun68i3qs2v"
+      }
+    },
+    "CommodityCodeEnum": {
+      "title": "Commodity Code",
+      "description": "Codeset IATA Load Control - AHM 510, 1.1.",
+      "type": "string",
+      "pattern": "^[A-Z0-9]{1,2}$",
+      "x-stoplight": {
+        "id": "jjx26pyccb9tn"
+      }
+    },
+    "ConformanceStateCode": {
+      "title": "Conformance State_ Code",
+      "description": "Codifies state of conformance enforcements",
+      "type": "string",
+      "x-stoplight": {
+        "id": "w7io1riq16fe4"
+      }
+    },
+    "ContainerHandlingTypeText": {
+      "title": "Container Handling Type_ Text",
+      "description": "Free text field up to 8 characters",
+      "type": "string",
+      "x-stoplight": {
+        "id": "u7leznxnz5qri"
+      }
+    },
+    "ControlStateCode": {
+      "title": "Control State_ Code",
+      "description": "Codifies Control",
+      "type": "string",
+      "x-stoplight": {
+        "id": "ahoe3rkz1s9k1"
+      }
+    },
+    "CrewMember": {
+      "title": "Crew Member",
+      "description": "A Role of an individual person to be a member of a crew.",
+      "type": "object",
+      "properties": {
+        "carrier": {
+          "title": "Each Crew Member may be engaged by one and only one Carrier",
+          "description": "An organization operating transport vehicles for commercial purposes which offers transport services, both scheduled or non-scheduled, to the public for carriage of passengers and their baggage, mail and/or cargo and is certified for such purposes by an authority of the state in which it is established.",
+          "$ref": "#/$defs/Carrier",
+          "x-stoplight": {
+            "id": "9jw5ye2puhk22"
+          }
+        },
+        "crewMemberIdentifier": {
+          "title": "Crew Member.Crew Member Identifier",
+          "description": "Identifier of a crew member as assigned by the airline.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "533ddt0bmo302"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "lgh5bdtw6svz4"
+      }
+    },
+    "Date": {
+      "title": "Date",
+      "description": "A date is a Gregorian calendar representation in various common resolutions: year, month, week, day.",
+      "type": "string",
+      "format": "date",
+      "x-stoplight": {
+        "id": "e4fy4yhnx6wtp"
+      }
+    },
+    "DatedMarketingSegment": {
+      "title": "Dated Marketing Segment",
+      "description": "A commercial designation under which a Dated Operating Segment can be booked, either under the operating carrier's designator or that of another carrier (codeshare).",
+      "type": "object",
+      "required": [
+        "carrier",
+        "datedOperatingSegment",
+        "marketingCarrierFlightNumberText",
+        "operationalSuffixText"
+      ],
+      "properties": {
+        "carrier": {
+          "title": "Each Dated Marketing Segment must is marketed by one and only one Carrier",
+          "description": "An organization operating transport vehicles for commercial purposes which offers transport services, both scheduled or non-scheduled, to the public for carriage of passengers and their baggage, mail and/or cargo and is certified for such purposes by an authority of the state in which it is established.",
+          "$ref": "#/$defs/Carrier",
+          "x-stoplight": {
+            "id": "7kom5t9fu3tn1"
+          }
+        },
+        "datedMarketingSegmentIdentifier": {
+          "title": "Dated Marketing Segment.Dated Marketing Segment Identifier",
+          "description": "Identifier of a Dated Marketing Segment.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "zoxbgfjx6a108"
+          }
+        },
+        "datedOperatingSegment": {
+          "title": "Each Dated Marketing Segment must marketed as one and only one Dated Operating Segment",
+          "description": "An operation between board point and any subsequent off point within the same flight designator. Could be one or more legs. Could also be used for other transport vehicles such as train or bus etc.",
+          "$ref": "#/$defs/DatedOperatingSegment",
+          "x-stoplight": {
+            "id": "nclw6nlo7wv6g"
+          }
+        },
+        "funnelFlightInd": {
+          "title": "Dated Marketing Segment.Funnel Flight Indicator",
+          "description": "Use of a single flight number for an itinerary that actually involves an online connection with two separate flight numbers, with the presumed intent to make the itinerary appear to be a direct flight with a change of aircraft as opposed to a connection.",
+          "$ref": "#/$defs/Ind",
+          "x-stoplight": {
+            "id": "9u8btjm7ouvew"
+          }
+        },
+        "marketingCarrierFlightNumberText": {
+          "title": "Dated Marketing Segment.Marketing Carrier Flight Number Text",
+          "description": "Numerical designation of a flight as it is marketed by a carrier.",
+          "$ref": "#/$defs/FlightNumberText",
+          "x-stoplight": {
+            "id": "vbcy6pkv0ci7u"
+          }
+        },
+        "operationalSuffixText": {
+          "title": "Dated Marketing Segment.Operational Suffix Text",
+          "description": "An operational suffix used to distinguish two flights having the same flight number and departing from their respective Origin Stations on the same date.",
+          "$ref": "#/$defs/OperationalSuffixText",
+          "x-stoplight": {
+            "id": "jkaew5quwiyux"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "vzxax3yya8ukq"
+      }
+    },
+    "DatedOperatingFlight": {
+      "title": "Dated Operating Flight",
+      "description": "An operation of one or more Dated Legs in a specified sequence, with the same flight designator. Could use a flight number for other transport vehicles such as train or bus etc.",
+      "type": "object",
+      "required": [
+        "administratingCarrierFlightNumberText",
+        "flightIdentifierDate",
+        "operatingCarrier",
+        "operationalSuffixText"
+      ],
+      "properties": {
+        "administratingCarrierFlightNumberText": {
+          "title": "Dated Operating Flight.Administrating Carrier Flight Number Text",
+          "description": "Numerical designation of a flight.",
+          "$ref": "#/$defs/FlightNumberText",
+          "x-stoplight": {
+            "id": "hu25rhsd4etlm"
+          }
+        },
+        "flightIdentifierDate": {
+          "title": "Dated Operating Flight.Flight Identifier Date",
+          "description": "(UTC) date of the scheduled aircraft departure from the station of origin.",
+          "$ref": "#/$defs/Date",
+          "x-stoplight": {
+            "id": "breckuod0az5c"
+          }
+        },
+        "operatingCarrier": {
+          "title": "Each Dated Operating Flight must be operated by one and only one Carrier",
+          "description": "An organization operating transport vehicles for commercial purposes which offers transport services, both scheduled or non-scheduled, to the public for carriage of passengers and their baggage, mail and/or cargo and is certified for such purposes by an authority of the state in which it is established.",
+          "$ref": "#/$defs/Carrier",
+          "x-stoplight": {
+            "id": "6hkxtlzisqcqc"
+          }
+        },
+        "operationalSuffixText": {
+          "title": "Dated Operating Flight.Operational Suffix Text",
+          "description": "from SIX XSD: Alphabetical character following a flight number assigned for operational purposes. SSIM: A code assigned by the administrating carrier for operational purposes.",
+          "$ref": "#/$defs/OperationalSuffixText",
+          "x-stoplight": {
+            "id": "vrepq2fzc0m0a"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "0vopv97c3w61r"
+      }
+    },
+    "DatedOperatingLeg": {
+      "title": "Dated Operating Leg",
+      "description": "A nonstop operation of a transport vehicle between the departure station and the arrival station. Can be used for aircrafts as well as other transport vehicles such as train or bus etc. Superseded by Flight Leg.",
+      "type": "object",
+      "required": [
+        "datedOperatingFlight"
+      ],
+      "properties": {
+        "datedOperatingFlight": {
+          "title": "Each Dated Operating Leg must be part of one and only one Dated Operating Flight",
+          "description": "An operation of one or more Dated Legs in a specified sequence, with the same flight designator. Could use a flight number for other transport vehicles such as train or bus etc.",
+          "$ref": "#/$defs/DatedOperatingFlight",
+          "x-stoplight": {
+            "id": "wdj6ek61entb7"
+          }
+        },
+        "datedOperatingLegIdentifier": {
+          "title": "Dated Operating Leg.Dated Operating Leg Identifier",
+          "description": "Uniquely identifies a leg within the context of one message.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "b6g56wv7zish1"
+          }
+        },
+        "onwardLeg": {
+          "title": "Each Previous Leg may be followed by one or more Previous Legs",
+          "description": "A nonstop operation of a transport vehicle between the departure station and the arrival station. Can be used for aircrafts as well as other transport vehicles such as train or bus etc. Superseded by Flight Leg.",
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/DatedOperatingLeg",
+            "x-stoplight": {
+              "id": "nt3ktlmkpt6i7"
+            }
+          },
+          "x-stoplight": {
+            "id": "35fxvxfbqesay"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "dajgvi9rw5cc4"
+      }
+    },
+    "DatedOperatingSegment": {
+      "title": "Dated Operating Segment",
+      "description": "An operation between board point and any subsequent off point within the same flight designator. Could be one or more legs. Could also be used for other transport vehicles such as train or bus etc.",
+      "type": "object",
+      "required": [
+        "datedOperatingFlight",
+        "destStation",
+        "operatingCarrier",
+        "operatingCarrierFlightNumberText",
+        "operationalSuffixText",
+        "originStation"
+      ],
+      "properties": {
+        "datedOperatingFlight": {
+          "title": "Each Dated Operating Segment must be delivered by one and only one Dated Operating Flight",
+          "description": "An operation of one or more Dated Legs in a specified sequence, with the same flight designator. Could use a flight number for other transport vehicles such as train or bus etc.",
+          "$ref": "#/$defs/DatedOperatingFlight",
+          "x-stoplight": {
+            "id": "ae8im9ake7yox"
+          }
+        },
+        "datedOperatingLeg": {
+          "title": "Each Dated Operating Segment may be implemented by one or more Dated Operating Legs",
+          "description": "A nonstop operation of a transport vehicle between the departure station and the arrival station. Can be used for aircrafts as well as other transport vehicles such as train or bus etc. Superseded by Flight Leg.",
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/DatedOperatingLeg",
+            "x-stoplight": {
+              "id": "yuhwpgvhefk23"
+            }
+          },
+          "x-stoplight": {
+            "id": "h3y1n50t25n8d"
+          }
+        },
+        "datedOperatingSegmentIdentifier": {
+          "title": "Dated Operating Segment.Dated Operating Segment Identifier",
+          "description": "Identifier of a Dated Operating Segment.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "lhhghsty79y5r"
+          }
+        },
+        "destStation": {
+          "title": "Each Destination must arrive at one and only one Destination",
+          "description": "A Location or facility where air or surface transportation originates, stops and/or terminates, and where passengers and/or cargo can be taken on or off.",
+          "$ref": "#/$defs/Station",
+          "x-stoplight": {
+            "id": "0v63kgbdbv5r4"
+          }
+        },
+        "operatingCarrier": {
+          "title": "Each Dated Operating Segment must be operated by one and only one Carrier",
+          "description": "An organization operating transport vehicles for commercial purposes which offers transport services, both scheduled or non-scheduled, to the public for carriage of passengers and their baggage, mail and/or cargo and is certified for such purposes by an authority of the state in which it is established.",
+          "$ref": "#/$defs/Carrier",
+          "x-stoplight": {
+            "id": "yw0lnbar9pm9p"
+          }
+        },
+        "operatingCarrierFlightNumberText": {
+          "title": "Dated Operating Segment.Operating Carrier Flight Number Text",
+          "description": "Numerical designation of a flight as it is operated by a carrier.",
+          "$ref": "#/$defs/FlightNumberText",
+          "x-stoplight": {
+            "id": "3limszcqiao5o"
+          }
+        },
+        "operationalSuffixText": {
+          "title": "Dated Operating Segment.Operational Suffix Text",
+          "description": "Used to distinguish two flights having the same flight number and departing from their respective Origin Stations on the same date.",
+          "$ref": "#/$defs/OperationalSuffixText",
+          "x-stoplight": {
+            "id": "kqdsgd65vwqhw"
+          }
+        },
+        "originStation": {
+          "title": "Each Origin must depart from one and only one Origin",
+          "description": "A Location or facility where air or surface transportation originates, stops and/or terminates, and where passengers and/or cargo can be taken on or off.",
+          "$ref": "#/$defs/Station",
+          "x-stoplight": {
+            "id": "39k4lstap3s6p"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "8ljxgng4puyuc"
+      }
+    },
+    "DateTime": {
+      "title": "Date Time",
+      "description": "A date time identifies a date and time of day to various common resolutions: year, month, week, day, hour, minute, second, and fraction of second.",
+      "type": "string",
+      "format": "date-time",
+      "x-stoplight": {
+        "id": "r9esa66drzqjn"
+      }
+    },
+    "Delivery": {
+      "title": "Delivery",
+      "description": "A delivery reports when an item is (planned to be) delivered at a facility potentially using a vehicle",
+      "type": "object",
+      "properties": {
+        "earliestDateTime": {
+          "title": "Delivery.Earliest Date Time",
+          "description": "Earliest or target time for delivery",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "ujogjxi7v7v8d"
+          }
+        },
+        "facility": {
+          "title": "Each Delivery may to one and only one Facility",
+          "description": "An infrastructure (such as an airfield) that is built, installed, or established to serve a particular purpose Examples: an aircraft stand, a baggage cart, a gate, a high loader",
+          "$ref": "#/$defs/Facility",
+          "x-stoplight": {
+            "id": "m09ulb3zbkv65"
+          }
+        },
+        "latestDateTime": {
+          "title": "Delivery.Latest Date Time",
+          "description": "Latest time for delivery",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "pb9fut0bktjsd"
+          }
+        },
+        "surfaceTransportVehicle": {
+          "title": "Each Delivery may using one and only one Surface Transport Vehicle",
+          "description": "A means used for transporting people or goods, on land or water. E.g. train, bus, van, ship.",
+          "$ref": "#/$defs/SurfaceTransportVehicle",
+          "x-stoplight": {
+            "id": "nu6upy7hw9r32"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "z07dkcchp905o"
+      }
+    },
+    "EventTriggerCode": {
+      "title": "Event Trigger_ Code",
+      "description": "IATA RP1745 ch 2.3.21 Event Trigger Qualifier",
+      "$ref": "#/$defs/EventTriggerCodeEnum",
+      "x-stoplight": {
+        "id": "3lhik4shjf75e"
+      }
+    },
+    "EventTriggerCodeEnum": {
+      "title": "Event Trigger Code",
+      "description": "The codelist contents of IATA RP1745 ch 2.3.21 Event Trigger Qualifier",
+      "type": "string",
+      "pattern": "^[0-9]$",
+      "x-stoplight": {
+        "id": "84iq19yirux8i"
+      }
+    },
+    "ExceptionCode": {
+      "title": "Exception_ Code",
+      "description": "The code of the exception control",
+      "$ref": "#/$defs/ExceptionCodeEnum",
+      "x-stoplight": {
+        "id": "k22l30ye68v2h"
+      }
+    },
+    "ExceptionCodeEnum": {
+      "title": "Exception Code",
+      "description": "See IATA RP 1745 Attachment A 1.2 and 1.3 bag exception codes.",
+      "type": "string",
+      "pattern": "^[A-Z]{2,4}$",
+      "x-stoplight": {
+        "id": "iuvo63balgebf"
+      }
+    },
+    "Facility": {
+      "title": "Facility",
+      "description": "An infrastructure (such as an airfield) that is built, installed, or established to serve a particular purpose Examples: an aircraft stand, a baggage cart, a gate, a high loader",
+      "type": "object",
+      "required": [
+        "station"
+      ],
+      "properties": {
+        "baggageFacilityType": {
+          "title": "Each Facility may be classified by one and only one Baggage Facility Type",
+          "description": "A classification of Facility according to Facility Type",
+          "$ref": "#/$defs/BaggageFacilityType",
+          "x-stoplight": {
+            "id": "cr3v4hq7l3jqs"
+          }
+        },
+        "facilityIdentifier": {
+          "title": "Facility.Facility Identifier",
+          "description": "Identifies facility according to local conventions",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "e52izv1scuc7c"
+          }
+        },
+        "geospatialLocation": {
+          "title": "Each Facility may is located at one and only one Geospatial Location",
+          "description": "A location with a spatial attribute, probably on the surface of the earth. For example: Longitude and Latitude",
+          "$ref": "#/$defs/GeospatialLocation",
+          "x-stoplight": {
+            "id": "0ee8ibd36ga9z"
+          }
+        },
+        "name": {
+          "title": "Facility.Name",
+          "description": "Names e.g. A12",
+          "$ref": "#/$defs/ProperName",
+          "x-stoplight": {
+            "id": "rxvvqoxbhdbgq"
+          }
+        },
+        "postalAddress": {
+          "title": "Each Facility may one and only one Postal Address",
+          "description": "A natural or physical address used for postal service. May be a building address, airport address, etc.",
+          "$ref": "#/$defs/PostalAddress",
+          "x-stoplight": {
+            "id": "7gngqx8qqlt66"
+          }
+        },
+        "station": {
+          "title": "Each Facility must is associated to one and only one Station",
+          "description": "A Location or facility where air or surface transportation originates, stops and/or terminates, and where passengers and/or cargo can be taken on or off.",
+          "$ref": "#/$defs/Station",
+          "x-stoplight": {
+            "id": "tzjml0i5z0qqk"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "nli4mlqm2rbqy"
+      }
+    },
+    "FlightNumberText": {
+      "title": "Flight Number_ Text",
+      "description": "Identifies a flight number. 1 to 4 digits. May or may not have leading zeros when less than 4 digits. The use of leading zeros does not create a different Flight Number. For example, Flight Numbers 123 and 0123 are the same.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "pcdiy428i20z9"
+      }
+    },
+    "GeospatialLocation": {
+      "title": "Geospatial Location",
+      "description": "A location with a spatial attribute, probably on the surface of the earth. For example: Longitude and Latitude",
+      "type": "object",
+      "properties": {
+        "pointElevationNumber": {
+          "title": "Geospatial Location.Point Elevation Number",
+          "description": "The number of the spatial location point elevation.",
+          "$ref": "#/$defs/Number",
+          "x-stoplight": {
+            "id": "h291jm4tgn3m1"
+          }
+        },
+        "pointLatitudeNumber": {
+          "title": "Geospatial Location.Point Latitude Number",
+          "description": "The number of the spatial location point latitude.",
+          "$ref": "#/$defs/Number",
+          "x-stoplight": {
+            "id": "urqmc20o3dquz"
+          }
+        },
+        "pointLongitudeNumber": {
+          "title": "Geospatial Location.Point Longitude Number",
+          "description": "The number of the spatial location point longitude.",
+          "$ref": "#/$defs/Number",
+          "x-stoplight": {
+            "id": "ned38yzhqg57k"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "psry907r38jkg"
+      }
+    },
+    "Hold": {
+      "title": "Hold",
+      "description": "A space in an aircraft confined by ceiling, floor, walls and bulkhead, used for carrying load.",
+      "type": "object",
+      "properties": {},
+      "x-stoplight": {
+        "id": "hsanqu4gpfe0a"
+      }
+    },
+    "HoldCompartment": {
+      "title": "Hold Compartment",
+      "description": "A space designated within a hold that can be containerized/palletized or not.",
+      "type": "object",
+      "properties": {
+        "hold": {
+          "title": "Each Hold Compartment may be part of one and only one Hold",
+          "description": "A space in an aircraft confined by ceiling, floor, walls and bulkhead, used for carrying load.",
+          "$ref": "#/$defs/Hold",
+          "x-stoplight": {
+            "id": "2bpbuuujbx4lw"
+          }
+        },
+        "holdCompartmentIdentifier": {
+          "title": "Hold Compartment.Hold Compartment Identifier",
+          "description": "Identifies a compartment within a hold (compartment no). As per AHM505, compartments are numbered from 1 to 6. A second figure can indicate a section in a compartment starting from the front to the back and from right to left.",
+          "$ref": "#/$defs/HoldCompartmentIdentifier",
+          "x-stoplight": {
+            "id": "1vdix7jyh3ofb"
+          }
+        },
+        "holdIdentifier": {
+          "title": "Hold Compartment.Hold Identifier",
+          "description": "Identifies a hold within a deck. Typical values include FWD (forward), AFT, BULK, MAIN (deck).",
+          "$ref": "#/$defs/HoldIdentifier",
+          "x-stoplight": {
+            "id": "4mg2g7uou8mf2"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "3nh0bue2xjmzl"
+      }
+    },
+    "HoldCompartmentIdentifier": {
+      "title": "Hold Compartment_ Identifier",
+      "description": "Identifies a Compartment. As per AHM505, compartments are numbered from the rear of the aircraft in descending order from 6 to 1. A second figure can indicate a section in a compartment starting from the front to the back and from right to left.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "qza98rap15d3a"
+      }
+    },
+    "HoldIdentifier": {
+      "title": "Hold_ Identifier",
+      "description": "Specifies a Hold identifier (AFT, FWD, BULK)",
+      "type": "string",
+      "x-stoplight": {
+        "id": "jcurc9wg4ijva"
+      }
+    },
+    "IataLocationCode": {
+      "title": "IATA Location_ Code",
+      "description": "Additional BDT to specify the codeset which defines the IATA airport or city codes.",
+      "$ref": "#/$defs/IataLocationCodeEnum",
+      "x-stoplight": {
+        "id": "v6tfpnug5xblp"
+      }
+    },
+    "IataLocationCodeEnum": {
+      "title": "IATA Location Code",
+      "description": "Enumeration set for the Location Code BDT.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "kxizybhlimav2"
+      }
+    },
+    "Identifier": {
+      "title": "Identifier",
+      "description": "An identifier is a character string used to uniquely identify one instance of an object within an identification scheme that is managed by an agency.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "zr6fvndv4s7tc"
+      }
+    },
+    "IncidentStateCode": {
+      "title": "Incident State_ Code",
+      "description": "Codifies Incident State",
+      "type": "string",
+      "x-stoplight": {
+        "id": "yvb57i636v0th"
+      }
+    },
+    "Ind": {
+      "title": "Indicator",
+      "description": "An indicator is a list of two mutually exclusive Boolean values that express the only possible states of a property.",
+      "type": "boolean",
+      "x-stoplight": {
+        "id": "ihkzfg3ghmkj5"
+      }
+    },
+    "Individual": {
+      "title": "Individual",
+      "description": "A single human being as distinct from a group, class, or family.",
+      "type": "object",
+      "properties": {
+        "crewMember": {
+          "title": "Each Individual may can be one and only one Crew Member",
+          "description": "A Role of an individual person to be a member of a crew.",
+          "$ref": "#/$defs/CrewMember",
+          "x-stoplight": {
+            "id": "mp4lkx6jmnxrk"
+          }
+        },
+        "givenName": {
+          "title": "Individual.Given Name",
+          "description": "A personal name given to the individual at birth and used before a family name. Also called first name. E.g. JOHN.",
+          "$ref": "#/$defs/ProperName",
+          "x-stoplight": {
+            "id": "bz6lbjqm8l934"
+          }
+        },
+        "pax": {
+          "title": "Each Individual may can be one and only one Passenger",
+          "description": "A person except members of the crew carried or to be carried with the consent of the carrier, on board of any transport vehicle such as aircraft, train, bus, ship. Holds the attributes specific to a one booking, from shopping to fulfillment.",
+          "$ref": "#/$defs/Pax",
+          "x-stoplight": {
+            "id": "jqz7dnt17s4s2"
+          }
+        },
+        "surname": {
+          "title": "Individual.Surname",
+          "description": "Individual's hereditary name(s) common to all members of a family. Also known as family name or last name. E.g. SMITH. Excludes any potential suffix.",
+          "$ref": "#/$defs/ProperName",
+          "x-stoplight": {
+            "id": "dc6m5wd8tr2nq"
+          }
+        },
+        "titleName": {
+          "title": "Individual.Title Name",
+          "description": "A word such as Mr., Mrs., Miss or Dr that is used before an individual's name to indicate the gender, profession or marital status.",
+          "$ref": "#/$defs/SupplementName",
+          "x-stoplight": {
+            "id": "de8gohfknmxzv"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "neu75grkrukat"
+      }
+    },
+    "InternalAirlineDataText": {
+      "title": "Internal Airline Data_ Text",
+      "description": "Free text field up to 59 characters",
+      "type": "string",
+      "x-stoplight": {
+        "id": "vxzyyndh47to8"
+      }
+    },
+    "LengthMeasure": {
+      "title": "Length_ Measure",
+      "description": "A numeric value determining a length (linear dimension) along with the specified unit of measure.",
+      "type": "object",
+      "properties": {
+        "unitCode": {
+          "title": "Length_ Measure.Unit. Code",
+          "description": "The length unit code of measure.",
+          "$ref": "#/$defs/LengthUnitCodeEnum",
+          "x-stoplight": {
+            "id": "bealk9r742jz9"
+          }
+        },
+        "value": {
+          "title": "Length_ Measure.Content",
+          "description": "The integer value determining a length",
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "x-stoplight": {
+            "id": "mognq95ji876q"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "ig1dyjn8z2kui"
+      }
+    },
+    "LengthUnitCodeEnum": {
+      "title": "Length Unit Code",
+      "description": "List of Length Unit Codes. Subset of UN/CEFACT Recommendation 20. Valid Values: CMT - Centimeter; FOT - Foot; INH - Inch; MTR - Meter",
+      "type": "string",
+      "enum": [
+        "CMT",
+        "FOT",
+        "INH",
+        "MTR"
+      ],
+      "x-stoplight": {
+        "id": "h328priruoq86"
+      }
+    },
+    "LoyaltyProgramAccount": {
+      "title": "Loyalty Program Account",
+      "description": "An account set up for a customer within a rewards program which holds funds on behalf of that customer.",
+      "type": "object",
+      "properties": {},
+      "x-stoplight": {
+        "id": "8c7uumonb4d52"
+      }
+    },
+    "Number": {
+      "title": "Number",
+      "description": "A mathematical number that is assigned or is determined by calculation.",
+      "type": "number",
+      "x-stoplight": {
+        "id": "f63jlbqo89mrd"
+      }
+    },
+    "OperationalSuffixText": {
+      "title": "Operational Suffix_ Text",
+      "description": "Defines the Operational Suffix which is appended to a flight number.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "kalshr7x01meb"
+      }
+    },
+    "Ordinal": {
+      "title": "Ordinal",
+      "description": "An ordinal number is an assigned mathematical number that represents order or sequence.",
+      "type": "integer",
+      "x-stoplight": {
+        "id": "pp91ufsuplmxv"
+      }
+    },
+    "Pax": {
+      "title": "Passenger",
+      "description": "A person except members of the crew carried or to be carried with the consent of the carrier, on board of any transport vehicle such as aircraft, train, bus, ship. Holds the attributes specific to a one booking, from shopping to fulfillment.",
+      "type": "object",
+      "properties": {
+        "booking": {
+          "title": "Each Passenger may has one and only one Booking",
+          "description": "A booking or reservation.",
+          "$ref": "#/$defs/Booking",
+          "x-stoplight": {
+            "id": "xoowzf2uybwm1"
+          }
+        },
+        "paxGroup": {
+          "title": "Each Passenger may can be part of one and only one Passenger Group",
+          "description": "A number of individual passengers traveling under one commercial name that associates them. E.g. a Tour group or a group for sales allotment from airline to agency.",
+          "$ref": "#/$defs/PaxGroup",
+          "x-stoplight": {
+            "id": "airfbbavhc90c"
+          }
+        },
+        "paxIdentifier": {
+          "title": "Passenger.Passenger Identifier",
+          "description": "Uniquely identifies a Passenger within the context of one message.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "lz3kal29rd2ra"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "9jecnkp1rbjgw"
+      }
+    },
+    "PaxGroup": {
+      "title": "Passenger Group",
+      "description": "A number of individual passengers traveling under one commercial name that associates them. E.g. a Tour group or a group for sales allotment from airline to agency.",
+      "type": "object",
+      "properties": {
+        "intendedPaxQty": {
+          "title": "Passenger Group.Intended Passenger Quantity",
+          "description": "Intended number of passengers for this Group.",
+          "$ref": "#/$defs/Qty",
+          "x-stoplight": {
+            "id": "3cxwfpjj4945d"
+          }
+        },
+        "paxGroupIdentifier": {
+          "title": "Passenger Group.Passenger Group Identifier",
+          "description": "Uniquely identifies a Passenger Group.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "3ispmu793x8nb"
+          }
+        },
+        "paxGroupName": {
+          "title": "Passenger Group.Passenger Group Name",
+          "description": "The name of the group.",
+          "$ref": "#/$defs/PaxGroupName",
+          "x-stoplight": {
+            "id": "8xfv48ud88o92"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "61qppdynws4wg"
+      }
+    },
+    "PaxGroupName": {
+      "title": "Passenger Group_ Name",
+      "description": "Specifies the Passenger Group Name",
+      "type": "string",
+      "x-stoplight": {
+        "id": "bt20y8in51a20"
+      }
+    },
+    "PaxSegment": {
+      "title": "Passenger Segment",
+      "description": "A transportation of a passenger on a Dated Operating Segment.",
+      "type": "object",
+      "required": [
+        "boardingStatusCode"
+      ],
+      "properties": {
+        "boardingStatusCode": {
+          "title": "Passenger Segment.Boarding Status Code",
+          "description": "The code of the passenger's boarding status.",
+          "$ref": "#/$defs/BoardingStatusCode",
+          "x-stoplight": {
+            "id": "nubclzf61ewxb"
+          }
+        },
+        "checkInSeqNumber": {
+          "title": "Passenger Segment.Check In Sequence Number",
+          "description": "This is the check in sequence number for a passenger on a passenger segment",
+          "$ref": "#/$defs/Ordinal",
+          "x-stoplight": {
+            "id": "hpzwh1hqdxphk"
+          }
+        },
+        "seatAllocationExceptionCode": {
+          "title": "Passenger Segment.Seat Allocation Exception Code",
+          "description": "A code which identifies an exception to being able to allocate a seat to the passenger pre gate. Used in the boarding pass to optionally specify 'GATE' or 'STBY' if a seat has not been allocated. If a seat row and column have been specified then this attributes content would not be populated on the boarding pass.",
+          "$ref": "#/$defs/SeatAllocationExceptionCode",
+          "x-stoplight": {
+            "id": "56ozi6hpff328"
+          }
+        },
+        "seatIdentifier": {
+          "title": "Passenger Segment.Seat Identifier",
+          "description": "The seat number of this service offer. Not filled in when jump seat, which is identified through the Baggage Segment Exception.",
+          "$ref": "#/$defs/SeatIdentifier",
+          "x-stoplight": {
+            "id": "kjkpvw5p77pq7"
+          }
+        },
+        "securityProfileStatusInd": {
+          "title": "Passenger Segment.Security Profile Status Indicator",
+          "description": "Indicates a passenger may be subject to more extensive security check and is at increased risk to no-show for flight.",
+          "$ref": "#/$defs/Ind",
+          "x-stoplight": {
+            "id": "l7e2tv1v654mi"
+          }
+        },
+        "segmentServiceOffer": {
+          "title": "Each Passenger Segment may qualify one and only one Segment Service Offer",
+          "description": "An offer that applies to a particular segment of travel.",
+          "$ref": "#/$defs/SegmentServiceOffer",
+          "x-stoplight": {
+            "id": "beyac2jfazo44"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "rewbvlzsv4vzm"
+      }
+    },
+    "PostalAddress": {
+      "title": "Postal Address",
+      "description": "A natural or physical address used for postal service. May be a building address, airport address, etc.",
+      "type": "object",
+      "properties": {
+        "buildingRoomText": {
+          "title": "Postal Address.Building Room Text",
+          "description": "Additional address information including building name, room, apartment, or suite number.",
+          "$ref": "#/$defs/Text",
+          "x-stoplight": {
+            "id": "u9wvrwhpw2abx"
+          }
+        },
+        "city": {
+          "title": "Each Postal Address may have one and only one City",
+          "description": "A City (e.g., Dublin), town, or postal station (i.e., a postal service territory, often used in a military address, or metropolitan area)",
+          "$ref": "#/$defs/City",
+          "x-stoplight": {
+            "id": "qtk2uc2axolny"
+          }
+        },
+        "labelText": {
+          "title": "Postal Address.Label Text",
+          "description": "Used to differentiate multiple Postal Addresses of one contact. For example: AddressAtOrigin or AddressAtDestination.",
+          "$ref": "#/$defs/Text",
+          "x-stoplight": {
+            "id": "xnkbcvbbfozoo"
+          }
+        },
+        "poBoxCode": {
+          "title": "Postal Address.PO Box Code",
+          "description": "Post office box. For example: P.O. Box 21.",
+          "$ref": "#/$defs/Code",
+          "x-stoplight": {
+            "id": "k4a1orerz5m2c"
+          }
+        },
+        "postalCode": {
+          "title": "Postal Address.Postal Code",
+          "description": "Postal code. For example: 11001, 11001-2345.",
+          "$ref": "#/$defs/Code",
+          "x-stoplight": {
+            "id": "hpuco6c9dmo9d"
+          }
+        },
+        "streetText": {
+          "title": "Postal Address.Street Text",
+          "description": "Street name and number. For example: Main Street, 100 Main Street.",
+          "$ref": "#/$defs/Text",
+          "x-stoplight": {
+            "id": "ph1jw0d2pywv4"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "nt18yu9pfyg4a"
+      }
+    },
+    "Printer": {
+      "title": "Printer",
+      "description": "A device for printing text or pictures or barcodes, especially one linked to a computer.",
+      "type": "object",
+      "required": [
+        "deviceIdentifier"
+      ],
+      "properties": {
+        "deviceIdentifier": {
+          "title": "Printer.Device Identifier",
+          "description": "Identifier of the device.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "8rpqrhcr7tw2a"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "ut6eg52b1tb22"
+      }
+    },
+    "ProperName": {
+      "title": "Proper_ Name",
+      "description": "BDT with value constraints for proper, regular names (e.g. Individual Surname, Individual First Name, Company Name, etc.).",
+      "type": "string",
+      "x-stoplight": {
+        "id": "0wxngxmqjqq9j"
+      }
+    },
+    "Qty": {
+      "title": "Quantity",
+      "description": "A quantity is a counted number of non-monetary units, possibly including fractions",
+      "type": "number",
+      "x-stoplight": {
+        "id": "a82tz576o10ig"
+      }
+    },
+    "Rbd": {
+      "title": "RBD",
+      "description": "A categorization used to facilitate access to inventory, application of filed fares, and to identify cabin entitlement. For example: 'J' for Business Class Premium, 'D' for Business Discounted.",
+      "type": "object",
+      "required": [
+        "rbdCode"
+      ],
+      "properties": {
+        "rbdCode": {
+          "title": "RBD.RBD Code",
+          "description": "Code used to identify a particular RBD. For example: P, J, W, M.",
+          "$ref": "#/$defs/RbdCode",
+          "x-stoplight": {
+            "id": "73y5s2w9jyrz8"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "x7qwp5p7dojit"
+      }
+    },
+    "RbdCode": {
+      "title": "RBD_ Code",
+      "description": "Additional BDT to specify the RBD as defined in AIRIMP and SSIM.",
+      "$ref": "#/$defs/RbdCodeEnum",
+      "x-stoplight": {
+        "id": "58sdunmj6s8yw"
+      }
+    },
+    "RbdCodeEnum": {
+      "title": "RBD Code",
+      "description": "Enumeration values of RBD Codes as per PADIS codeset 9800.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "p0hhj177an5bx"
+      }
+    },
+    "Scanner": {
+      "title": "Scanner",
+      "description": "A device that scans objects and converts them into or extracts digital data. E.g. document scanner, barcode reader, biometric scanner.",
+      "type": "object",
+      "required": [
+        "scannerIdentifier"
+      ],
+      "properties": {
+        "scannerIdentifier": {
+          "title": "Scanner.Scanner Identifier",
+          "description": "Identifier of the technology device.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "hrw829cixwjhk"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "5foaal0umwfwe"
+      }
+    },
+    "ScreeningAlarmCode": {
+      "title": "Screening Alarm_ Code",
+      "description": "The screening alarm code of the bag incident",
+      "$ref": "#/$defs/ScreeningAlarmCodeEnum",
+      "x-stoplight": {
+        "id": "aak0jlh0peyaa"
+      }
+    },
+    "ScreeningAlarmCodeEnum": {
+      "title": "Screening Alarm Code",
+      "description": "The codelist contents of IATA Recommendation 1745 Attachment A Screening Alarm Reason Codes Valid Values: C - combination of dark alarm and explosives; D - Dark alarm; E - Explosives; N - no decision; T - time out",
+      "type": "string",
+      "enum": [
+        "C",
+        "D",
+        "E",
+        "N",
+        "T"
+      ],
+      "x-stoplight": {
+        "id": "7equj7j5ci25s"
+      }
+    },
+    "ScreeningCommentText": {
+      "title": "Screening Comment_ Text",
+      "description": "Free text field up to 38 characters",
+      "type": "string",
+      "x-stoplight": {
+        "id": "di106z2cr889a"
+      }
+    },
+    "ScreeningInstructionCode": {
+      "title": "Screening Instruction_ Code",
+      "description": "The screening instruction code of the security control",
+      "$ref": "#/$defs/SecurityScreeningInstructionCodeEnum",
+      "x-stoplight": {
+        "id": "6m4yesrg37924"
+      }
+    },
+    "ScreeningMethodCode": {
+      "title": "Screening Method_ Code",
+      "description": "The screening method code of the method interaction",
+      "$ref": "#/$defs/ScreeningMethodCodeEnum",
+      "x-stoplight": {
+        "id": "ycof0hi3mztw9"
+      }
+    },
+    "ScreeningMethodCodeEnum": {
+      "title": "Screening Method Code",
+      "description": "The codelist contents of IATA Recommendation 1745 Attachment A Screening Method Codes Valid Values: AT - Advanced Technology screening method; EBD - Explosive bulk detection screening method; ETD - Explosive trace detection screening method; HAND - Hand Search screening method; XRAY - X-ray screening method",
+      "type": "string",
+      "enum": [
+        "AT",
+        "EBD",
+        "ETD",
+        "HAND",
+        "XRAY"
+      ],
+      "x-stoplight": {
+        "id": "z9220b0c24tdm"
+      }
+    },
+    "SeatAllocationExceptionCode": {
+      "title": "Seat Allocation Exception_ Code",
+      "description": " Reasons for exceptions to allocating a seat at time of boarding.",
+      "$ref": "#/$defs/SeatAllocationExceptionCodeEnum",
+      "x-stoplight": {
+        "id": "dwkn61ztb3lj4"
+      }
+    },
+    "SeatAllocationExceptionCodeEnum": {
+      "title": "Seat Allocation Exception Code",
+      "description": "Lists the codes for exemption from seat allocation at issuance of boarding pass. Valid Values: GATE - A seat may be allocated at the gate if there is a spare seat for this standby boarding pass.; STBY - A seat may be allocated at the gate if there is a spare seat for this standby boarding pass.",
+      "type": "string",
+      "enum": [
+        "GATE",
+        "STBY"
+      ],
+      "x-stoplight": {
+        "id": "3l7r5ol5azjfb"
+      }
+    },
+    "SeatIdentifier": {
+      "title": "Seat_ Identifier",
+      "description": "The seat identifier of the service offering",
+      "type": "string",
+      "x-stoplight": {
+        "id": "vfjdtt0hzdfo7"
+      }
+    },
+    "SecurityControlNumber": {
+      "title": "Security Control_ Number",
+      "description": "The security number of the security control.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "q29ddfzrxzygd"
+      }
+    },
+    "SecurityScreeningEntityIdentifier": {
+      "title": "Security Screening Entity_ Identifier",
+      "description": "The result qualifier, identifying the entity that generated the Security Screening Result",
+      "type": "string",
+      "x-stoplight": {
+        "id": "d6gn7mxzglm7a"
+      }
+    },
+    "SecurityScreeningInstructionCodeEnum": {
+      "title": "Security Screening Instruction Code",
+      "description": "The codelist contents of IATA recommended practice RP 1745 Attachment a screening instruction codes Valid Values: DEF - Default level of screening applies.; NON - No screening required conditional to applicable regulations.; PRE - Selected for increased level of screening; SEL - Selected for increased level of screening.",
+      "type": "string",
+      "enum": [
+        "DEF",
+        "NON",
+        "PRE",
+        "SEL"
+      ],
+      "x-stoplight": {
+        "id": "nxtg42rfpazr9"
+      }
+    },
+    "SecurityScreeningStatusCode": {
+      "title": "Security Screening Status_ Code",
+      "description": "The security screening status code of the bag status",
+      "$ref": "#/$defs/SecurityScreeningStatusCodeEnum",
+      "x-stoplight": {
+        "id": "vyr3he50hao7u"
+      }
+    },
+    "SecurityScreeningStatusCodeEnum": {
+      "title": "Security Screening Status Code",
+      "description": "The codelist contents of IATA recommended practice RP 1745 Attachment a baggage security screening result codes Valid Values: CLR - Cleared, bag is cleared according to applicable regulations; REJ - Rejected, bag is rejected due to detected weapons, explosives or other dangerous devices; UCL - Unclear, bag is unclear due to indeterminate screening result",
+      "type": "string",
+      "enum": [
+        "CLR",
+        "REJ",
+        "UCL"
+      ],
+      "x-stoplight": {
+        "id": "3rtso8mqwg2jw"
+      }
+    },
+    "SegmentSecurityControls": {
+      "title": "Segment Security Controls",
+      "description": "A set of principles or procedures according to which something is done on a particular segment of travel.",
+      "type": "object",
+      "properties": {
+        "authorityToLoadInd": {
+          "title": "Segment Security Controls.Authority To Load Indicator",
+          "description": "The authority to load indicator of the security control. An authority security control is an official permission; sanction from a security context.",
+          "$ref": "#/$defs/Ind",
+          "x-stoplight": {
+            "id": "8zj131o68zy0w"
+          }
+        },
+        "authorityToTransportInd": {
+          "title": "Segment Security Controls.Authority To Transport Indicator",
+          "description": "The authority to transport indicator of the security control. An authority security control is an official permission; sanction from a security context.",
+          "$ref": "#/$defs/Ind",
+          "x-stoplight": {
+            "id": "3p2mq6wqhead4"
+          }
+        },
+        "bagDeleteRequestInd": {
+          "title": "Segment Security Controls.Bag Delete Request Indicator",
+          "description": "A request by the airline to delete or mark as deleted the record for this bag as no longer expected for the flight.",
+          "$ref": "#/$defs/BagDeleteRequestInd",
+          "x-stoplight": {
+            "id": "pinhl8ir1bxxn"
+          }
+        },
+        "bagRemovalRequestInd": {
+          "title": "Segment Security Controls.Bag Removal Request Indicator",
+          "description": "A request by the airline to unload a loaded bag, Should be set with the authorization to load set to NO.",
+          "$ref": "#/$defs/BagRemovalRequestInd",
+          "x-stoplight": {
+            "id": "z0va29ftz46po"
+          }
+        },
+        "bagTagStatusCode": {
+          "title": "Segment Security Controls.Bag Tag Status Code",
+          "description": "Determines whether bag is authorized to load",
+          "$ref": "#/$defs/BagTagStatusCode",
+          "x-stoplight": {
+            "id": "qf470363l7fkj"
+          }
+        },
+        "paxStatus": {
+          "title": "Each Segment Security Controls may in context of one and only one Passenger Segment",
+          "description": "A transportation of a passenger on a Dated Operating Segment.",
+          "$ref": "#/$defs/PaxSegment",
+          "x-stoplight": {
+            "id": "55mxg16zzysxx"
+          }
+        },
+        "screeningInstructionCode": {
+          "title": "Segment Security Controls.Screening Instruction Code",
+          "description": "The Screening Instruction of the security control. Security instruction control is a security control or a direction or order in a security context.",
+          "$ref": "#/$defs/ScreeningInstructionCode",
+          "x-stoplight": {
+            "id": "gpkf5y7fq738d"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "ibsb0bfj0c0hm"
+      }
+    },
+    "SegmentSecurityOutcomes": {
+      "title": "Segment Security Outcomes",
+      "description": "A set of outcomes of applying Segment Security Controls to Baggage Process",
+      "type": "object",
+      "properties": {
+        "containerSealedInd": {
+          "title": "Segment Security Outcomes.Container Sealed Indicator",
+          "description": "The indicator of whether a container is sealed.",
+          "$ref": "#/$defs/Ind",
+          "x-stoplight": {
+            "id": "v3u79phyqhl7w"
+          }
+        },
+        "screeningComment": {
+          "title": "Segment Security Outcomes.Screening Comment",
+          "description": "Free text (1 to 38 a/n Characters)",
+          "$ref": "#/$defs/ScreeningCommentText",
+          "x-stoplight": {
+            "id": "l8i9td1td22wa"
+          }
+        },
+        "screeningDeviceIdentifier": {
+          "title": "Segment Security Outcomes.Screening Device Identifier",
+          "description": "Identifier, as defined by the manufacturer or airport, of the machine that has undertaken the screening activity and determined the screening result.",
+          "$ref": "#/$defs/Identifier",
+          "x-stoplight": {
+            "id": "j7iho31d88l3e"
+          }
+        },
+        "screeningEntityIdentifier": {
+          "title": "Segment Security Outcomes.Screening Entity Identifier",
+          "description": "The result qualifier, identifying the entity that generated the Security Screening Result",
+          "$ref": "#/$defs/SecurityScreeningEntityIdentifier",
+          "x-stoplight": {
+            "id": "j3l2zk1irrng3"
+          }
+        },
+        "screeningMethodCode": {
+          "title": "Segment Security Outcomes.Screening Method Code",
+          "description": "Code of the function interaction screening method.",
+          "$ref": "#/$defs/ScreeningMethodCode",
+          "x-stoplight": {
+            "id": "p1g22hx2pzp9y"
+          }
+        },
+        "screeningResultReason": {
+          "title": "Each Segment Security Outcomes may have one and only one Baggage Incident",
+          "description": "An Event that occurs spontaneously about a bag, and to which the organization is required to respond.",
+          "$ref": "#/$defs/BaggageIncident",
+          "x-stoplight": {
+            "id": "so22d78zcm2w6"
+          }
+        },
+        "screeningResultStatusCode": {
+          "title": "Segment Security Outcomes.Screening Result Status Code",
+          "description": "Code of the bag screening result status.",
+          "$ref": "#/$defs/SecurityScreeningStatusCode",
+          "x-stoplight": {
+            "id": "8ihlps149mba1"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "zg6gaqxvsnfom"
+      }
+    },
+    "SegmentServiceOffer": {
+      "title": "Segment Service Offer",
+      "description": "An offer that applies to a particular segment of travel.",
+      "type": "object",
+      "properties": {
+        "seatIdentifier": {
+          "title": "Segment Service Offer.Seat Identifier",
+          "description": "The seat number of this service offer. Not filled in when jump seat, which is identified through the Baggage Segment Exception.",
+          "$ref": "#/$defs/SeatIdentifier",
+          "x-stoplight": {
+            "id": "5j19hcq0drvcb"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "odlz7cfsgzg7q"
+      }
+    },
+    "Station": {
+      "title": "Station",
+      "description": "A Location or facility where air or surface transportation originates, stops and/or terminates, and where passengers and/or cargo can be taken on or off.",
+      "type": "object",
+      "required": [
+        "iataLocationCode"
+      ],
+      "properties": {
+        "iataLocationCode": {
+          "title": "Station.IATA Location Code",
+          "description": "IATA defined code identifying a city or station.",
+          "$ref": "#/$defs/IataLocationCode",
+          "x-stoplight": {
+            "id": "npv3e8aw9w0vs"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "2ciagqnbhl0jv"
+      }
+    },
+    "SupplementName": {
+      "title": "Supplement_ Name",
+      "description": "BDT with value constraints for short supplements to proper names, such as Title, Suffix, etc.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "iqju31c4kkdpn"
+      }
+    },
+    "SurfaceTransportIdentifier": {
+      "title": "Surface Transport_ Identifier",
+      "description": "The identifier of a surface transport vehicle.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "pgyf75oiffeqw"
+      }
+    },
+    "SurfaceTransportVehicle": {
+      "title": "Surface Transport Vehicle",
+      "description": "A means used for transporting people or goods, on land or water. E.g. train, bus, van, ship.",
+      "type": "object",
+      "properties": {
+        "carriageMediumCode": {
+          "title": "Surface Transport Vehicle.Carriage Medium Code",
+          "description": "The code of the carriage medium, i.e. type of transport vehicle.",
+          "$ref": "#/$defs/CarriageMediumCode",
+          "x-stoplight": {
+            "id": "hjr6adfvh37lz"
+          }
+        },
+        "surfaceTransportIdentifier": {
+          "title": "Surface Transport Vehicle.Surface Transport Identifier",
+          "description": "The identifier of the surface transport vehicle.",
+          "$ref": "#/$defs/SurfaceTransportIdentifier",
+          "x-stoplight": {
+            "id": "tysjm1kk45po1"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "ijk9d1dh9f7s8"
+      }
+    },
+    "Terminal": {
+      "title": "Terminal",
+      "description": "A departure and/or arrival building for aircraft, passengers or freight at a station for any transport mode.",
+      "type": "object",
+      "required": [
+        "iataTerminalCode"
+      ],
+      "properties": {},
+      "x-stoplight": {
+        "id": "kb92rho9vatv8"
+      }
+    },
+    "Text": {
+      "title": "Text",
+      "description": "Text is a character string such as a finite set of characters generally in the form of words of a language.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "eldfv74etvcc6"
+      }
+    },
+    "TransponderIdentifier": {
+      "title": "Transponder_ Identifier",
+      "description": "Unique Transponder identifier, known as T = TID for Transponder identification.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "jgak53a3c7537"
+      }
+    },
+    "TransportArrival": {
+      "title": "Transport Arrival",
+      "description": "An action or process of arriving of a transport vehicle in any place or location. Superseded by Aircraft Arrival.",
+      "type": "object",
+      "required": [
+        "datedOperatingLeg"
+      ],
+      "properties": {
+        "aircraftScheduledArrivalDateTime": {
+          "title": "Transport Arrival.Aircraft Scheduled Arrival Date Time",
+          "description": "Scheduled date and time of arrival of the aircraft at the terminal or departure gate at an airport.",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "g5kqo24ic091x"
+          }
+        },
+        "arrivalStation": {
+          "title": "Each Transport Arrival may takes place at one and only one Station",
+          "description": "A Location or facility where air or surface transportation originates, stops and/or terminates, and where passengers and/or cargo can be taken on or off.",
+          "$ref": "#/$defs/Station",
+          "x-stoplight": {
+            "id": "7bopymd1wbznf"
+          }
+        },
+        "datedOperatingLeg": {
+          "title": "Each Transport Arrival must have one and only one Dated Operating Leg",
+          "description": "A nonstop operation of a transport vehicle between the departure station and the arrival station. Can be used for aircrafts as well as other transport vehicles such as train or bus etc. Superseded by Flight Leg.",
+          "$ref": "#/$defs/DatedOperatingLeg",
+          "x-stoplight": {
+            "id": "8nuv5wduokkii"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "il1l3hs89w8yd"
+      }
+    },
+    "TransportDep": {
+      "title": "Transport Departure",
+      "description": "An action or process of leaving of a transport vehicle from any place or location. Superseded by Aircraft Departure.",
+      "type": "object",
+      "required": [
+        "datedOperatingLeg"
+      ],
+      "properties": {
+        "aircraftScheduledDepDateTime": {
+          "title": "Transport Departure.Aircraft Scheduled Departure Date Time",
+          "description": "Scheduled date and time of departure of the aircraft at the terminal or departure gate at an airport.",
+          "$ref": "#/$defs/DateTime",
+          "x-stoplight": {
+            "id": "c2x1q72ge2e5r"
+          }
+        },
+        "datedOperatingLeg": {
+          "title": "Each Transport Departure must have one and only one Dated Operating Leg",
+          "description": "A nonstop operation of a transport vehicle between the departure station and the arrival station. Can be used for aircrafts as well as other transport vehicles such as train or bus etc. Superseded by Flight Leg.",
+          "$ref": "#/$defs/DatedOperatingLeg",
+          "x-stoplight": {
+            "id": "91rn4h4cmr0sl"
+          }
+        },
+        "depStation": {
+          "title": "Each Transport Departure may takes place at one and only one Station",
+          "description": "A Location or facility where air or surface transportation originates, stops and/or terminates, and where passengers and/or cargo can be taken on or off.",
+          "$ref": "#/$defs/Station",
+          "x-stoplight": {
+            "id": "at9vzlm0zt9rr"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "puwaiqi0bmskd"
+      }
+    },
+    "Uld": {
+      "title": "ULD",
+      "description": "A Unit Load Device is a load carrying device which interfaces directly with aircraft loading and restraint systems and meets all restraint requirements without the use of supplementary equipment. Examples include containers, pallets and pallet nets.",
+      "type": "object",
+      "required": [
+        "ownerCode",
+        "serialNumberIdentifier",
+        "typeCode"
+      ],
+      "properties": {
+        "ownerCode": {
+          "title": "ULD.Owner Code",
+          "description": "Specifies ULD Owner Code as per IATA ULD Regulations section 4",
+          "$ref": "#/$defs/UldOwnerCode",
+          "x-stoplight": {
+            "id": "uxx0zpv157g2i"
+          }
+        },
+        "serialNumberIdentifier": {
+          "title": "ULD.Serial Number Identifier",
+          "description": "Specifies ULD Serial Number as per IATA ULD Regulations section 4",
+          "$ref": "#/$defs/UldSerialNumberIdentifier",
+          "x-stoplight": {
+            "id": "crlcfn9som76j"
+          }
+        },
+        "typeCode": {
+          "title": "ULD.Type Code",
+          "description": "Specifies ULD Type Code as per IATA ULD Regulations section 4",
+          "$ref": "#/$defs/UldTypeCode",
+          "x-stoplight": {
+            "id": "oe11prp1fjksk"
+          }
+        },
+        "uldOwner": {
+          "title": "Each ULD may is owned by one and only one ULD Owner",
+          "description": "A party may elect to own a fleet of ULD and make those available to industry",
+          "$ref": "#/$defs/UldOwner",
+          "x-stoplight": {
+            "id": "pvv6xsv8yu94x"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "mp38pu46n25z5"
+      }
+    },
+    "UldAllocation": {
+      "title": "ULD Allocation",
+      "description": "An allocation of a ULD to a specific set of legs and a load position in vehicle performing the legs",
+      "type": "object",
+      "required": [
+        "baggageProcess",
+        "carryingSegment",
+        "uld"
+      ],
+      "properties": {
+        "baggageProcess": {
+          "title": "Each ULD Allocation must be subject of one and only one Baggage Process",
+          "description": "A series of tasks or steps taken in order to achieve a particular end in the context of baggage logistics.",
+          "$ref": "#/$defs/BaggageProcess",
+          "x-stoplight": {
+            "id": "sazm7czzdzv34"
+          }
+        },
+        "baggageState": {
+          "title": "Each ULD Allocation may results in one and only one Baggage Statuses",
+          "description": "A set of statuses of baggage at a particular time in a process.",
+          "$ref": "#/$defs/BaggageStatuses",
+          "x-stoplight": {
+            "id": "m7994ckyq6co6"
+          }
+        },
+        "carryingSegment": {
+          "title": "Each ULD Allocation must is part of one and only one Dated Operating Segment",
+          "description": "An operation between board point and any subsequent off point within the same flight designator. Could be one or more legs. Could also be used for other transport vehicles such as train or bus etc.",
+          "$ref": "#/$defs/DatedOperatingSegment",
+          "x-stoplight": {
+            "id": "y4algtp3oqrv5"
+          }
+        },
+        "changeIndCode": {
+          "title": "ULD Allocation.Change Indicator Code",
+          "description": "Code of change indicator. (NEW,CHG,DEL).",
+          "$ref": "#/$defs/ChangeIndCode",
+          "x-stoplight": {
+            "id": "xxkduq5wnk72d"
+          }
+        },
+        "classOfService": {
+          "title": "Each ULD Allocation may have one and only one RBD",
+          "description": "A categorization used to facilitate access to inventory, application of filed fares, and to identify cabin entitlement. For example: 'J' for Business Class Premium, 'D' for Business Discounted.",
+          "$ref": "#/$defs/Rbd",
+          "x-stoplight": {
+            "id": "g427s4wybwbv5"
+          }
+        },
+        "classOfServiceCode": {
+          "title": "ULD Allocation.Class Of Service Code",
+          "description": "Code used to identify a particular RBD. For example: P, J, W, M.",
+          "$ref": "#/$defs/RbdCode",
+          "x-stoplight": {
+            "id": "mqjfk3jgoy22o"
+          }
+        },
+        "collection": {
+          "title": "Each ULD Allocation may is in one and only one Collection",
+          "description": "A collection reports when an item is (planned to be) collected at a facility potentially using a vehicle",
+          "$ref": "#/$defs/Collection",
+          "x-stoplight": {
+            "id": "0okbg23e2luq3"
+          }
+        },
+        "commodityCode": {
+          "title": "ULD Allocation.Commodity Code",
+          "description": "Code set used with ULDs for segregation of bags and/or cargo for efficient load and unload from the aircraft and subsequent ground operations. Load information codes, known also as commodity codes, are defined by but not limited to IATA Load Control - AHM 510, 1.1.",
+          "$ref": "#/$defs/CommodityCode",
+          "x-stoplight": {
+            "id": "xax5nmoi1mcgr"
+          }
+        },
+        "containerHandlingType": {
+          "title": "ULD Allocation.Container Handling Type",
+          "description": "Container Handling Type expressed in free format 8 characters",
+          "$ref": "#/$defs/ContainerHandlingTypeText",
+          "x-stoplight": {
+            "id": "ai1fec3xh4qbg"
+          }
+        },
+        "delivery": {
+          "title": "Each ULD Allocation may is in one and only one Delivery",
+          "description": "A delivery reports when an item is (planned to be) delivered at a facility potentially using a vehicle",
+          "$ref": "#/$defs/Delivery",
+          "x-stoplight": {
+            "id": "y0itbm1rgk2mc"
+          }
+        },
+        "internalAirlineData": {
+          "title": "ULD Allocation.Internal Airline Data",
+          "description": "Internal Airline Data",
+          "$ref": "#/$defs/InternalAirlineDataText",
+          "x-stoplight": {
+            "id": "dxg1wncei8nmw"
+          }
+        },
+        "securityControls": {
+          "title": "Each ULD Allocation may one and only one Segment Security Controls",
+          "description": "A set of principles or procedures according to which something is done on a particular segment of travel.",
+          "$ref": "#/$defs/SegmentSecurityControls",
+          "x-stoplight": {
+            "id": "15xkbvb36y3l3"
+          }
+        },
+        "segmentSecurityOutcomes": {
+          "title": "Each ULD Allocation may results in one and only one Segment Security Outcomes",
+          "description": "A set of outcomes of applying Segment Security Controls to Baggage Process",
+          "$ref": "#/$defs/SegmentSecurityOutcomes",
+          "x-stoplight": {
+            "id": "1yhloyw2emvds"
+          }
+        },
+        "uld": {
+          "title": "Each ULD Allocation must refers to one and only one ULD",
+          "description": "A Unit Load Device is a load carrying device which interfaces directly with aircraft loading and restraint systems and meets all restraint requirements without the use of supplementary equipment. Examples include containers, pallets and pallet nets.",
+          "$ref": "#/$defs/Uld",
+          "x-stoplight": {
+            "id": "gluvwkawvkcwo"
+          }
+        },
+        "uldLoadPosition": {
+          "title": "Each ULD Allocation may be held one and only one ULD Load Position",
+          "description": "A subdivision of a containerized/palletized compartment.",
+          "$ref": "#/$defs/UldLoadPosition",
+          "x-stoplight": {
+            "id": "wf8kedm169qh4"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "jn82u69av85c8"
+      }
+    },
+    "UldLoadPosition": {
+      "title": "ULD Load Position",
+      "description": "A subdivision of a containerized/palletized compartment.",
+      "type": "object",
+      "properties": {
+        "holdCompartment": {
+          "title": "Each ULD Load Position may is in one and only one Hold Compartment",
+          "description": "A space designated within a hold that can be containerized/palletized or not.",
+          "$ref": "#/$defs/HoldCompartment",
+          "x-stoplight": {
+            "id": "wfke5hn8vn0iz"
+          }
+        },
+        "uldLoadPositionIdentifier": {
+          "title": "ULD Load Position.ULD Load Position Identifier",
+          "description": "Identifies a possible ULD position within the aircraft, using one of the patterns described in AHM505. E.g. A, BR, CDL, E3, 13,22L, 32P, 413, 1112O. May contain compartment number, row position, left-to-right position in a row.",
+          "$ref": "#/$defs/UldLoadPositionIdentifier",
+          "x-stoplight": {
+            "id": "6qdlkv7rnfl8f"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "soubp7vg4xjsi"
+      }
+    },
+    "UldLoadPositionIdentifier": {
+      "title": "ULD Load Position_ Identifier",
+      "description": "Specifies a ULD Load Position identifier.",
+      "type": "string",
+      "x-stoplight": {
+        "id": "vpjlwz79rdznt"
+      }
+    },
+    "UldOwner": {
+      "title": "ULD Owner",
+      "description": "A party may elect to own a fleet of ULD and make those available to industry",
+      "type": "object",
+      "properties": {},
+      "x-stoplight": {
+        "id": "dyn30dijfsmoa"
+      }
+    },
+    "UldOwnerCode": {
+      "title": "ULD Owner_ Code",
+      "description": "Specifies ULD Owner code.",
+      "$ref": "#/$defs/UldOwnerCodeEnum",
+      "x-stoplight": {
+        "id": "9y3yvxu6x3s2z"
+      }
+    },
+    "UldOwnerCodeEnum": {
+      "title": "ULD Owner Code",
+      "description": "Code set used with ULDs for segregation of bags for efficient load and unload from the aircraft and subsequent ground operations. The owner code consist of two alpha-numeric see attachment 'B' for list of currently assigned Owner Codes",
+      "type": "string",
+      "pattern": "^[A-Z0-9]{2}$",
+      "x-stoplight": {
+        "id": "53k8ueou0vbyb"
+      }
+    },
+    "UldSerialNumberIdentifier": {
+      "title": "ULD Serial Number_ Identifier",
+      "description": "Specifies ULD Serial Number as per IATA ULD Regulations section 4",
+      "type": "string",
+      "x-stoplight": {
+        "id": "uafudtthik51f"
+      }
+    },
+    "UldTypeCode": {
+      "title": "ULD Type_ Code",
+      "description": "Specifies ULD Type codes.",
+      "$ref": "#/$defs/UldTypeCodeEnum",
+      "x-stoplight": {
+        "id": "pu6f3lq0xgmlc"
+      }
+    },
+    "UldTypeCodeEnum": {
+      "title": "ULD Type Code",
+      "description": "Code set used with ULDs for segregation of bags for efficient load and unload from the aircraft and subsequent ground operations. The type code consist of three characters, with the first character in alpha-numeric and the rest numeric",
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9]{2}$",
+      "x-stoplight": {
+        "id": "9csf6i9p0dyk8"
+      }
+    },
+    "Uri": {
+      "title": "URI",
+      "description": "A string of characters used to identify a resource. Such identification enables interaction with representations of the resource over a network, typically the World Wide Web, using specific protocols.",
+      "type": "string",
+      "format": "uri",
+      "x-stoplight": {
+        "id": "i5ssjzzuhp86a"
+      }
+    },
+    "WeightMeasure": {
+      "title": "Weight_ Measure",
+      "description": "A numeric value determining a weight along with the specified unit of measure.",
+      "type": "object",
+      "properties": {
+        "unitCode": {
+          "title": "Weight_ Measure.Unit. Code",
+          "description": "The weight unit code of measure.",
+          "$ref": "#/$defs/WeightUnitCodeEnum",
+          "x-stoplight": {
+            "id": "yde7819ai5xsz"
+          }
+        },
+        "value": {
+          "title": "Weight_ Measure.Content",
+          "description": "The numeric value determining a weight",
+          "type": "integer",
+          "maximum": 2147483647,
+          "exclusiveMinimum": 0,
+          "x-stoplight": {
+            "id": "rhr2ouc0k6xjf"
+          }
+        }
+      },
+      "x-stoplight": {
+        "id": "25co3qn9moj42"
+      }
+    },
+    "WeightUnitCodeEnum": {
+      "title": "Weight Unit Code",
+      "description": "List of Weight Unit Codes. Subset of UN/CEFACT Recommendation 20. Valid Values: KGM - Kilogram; LBR - US Pound",
+      "type": "string",
+      "enum": [
+        "KGM",
+        "LBR"
+      ],
+      "x-stoplight": {
+        "id": "wzz9pur1j2g4f"
+      }
+    }
+  }
+}

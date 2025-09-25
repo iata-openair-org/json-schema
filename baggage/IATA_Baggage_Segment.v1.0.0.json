@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "x-stoplight": {
+    "id": "6f80cc3576586"
+  },
+  "$id": "http://www.iata.org/IATA/2025.1/IATA_Baggage_Segment.v1.0.0.json",
+  "title": "Baggage Segment",
+  "description": "An allocation of a bag to a specific set of consecutive legs and a load position in vehicle performi",
+  "type": "object",
+  "required": [
+    "BagSegment"
+  ],
+  "properties": {
+    "BagSegment": {
+      "title": "BagSegment",
+      "description": "An allocation of a bag to a specific set of consecutive legs and a load position in vehicle performing the legs",
+      "$ref": "IATA_Baggage_Library.v1.0.0.json#/$defs/BagSegment",
+      "x-stoplight": {
+        "id": "ppr06kuhg1h5s"
+      }
+    }
+  }
+}
